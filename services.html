@@ -1,0 +1,249 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Underworld Technology - Services</title>
+    <link rel="stylesheet" href="services.css">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap">
+    <script type="module" src="firebaseauth.js"></script>
+</head>
+<body>
+    <header class="navbar">
+        <div class="container">
+            <!-- Logo image only for mobile -->
+            <div class="logo-mobile">
+                <img src="logo/logo2.png" alt="Logo Badge" class="logo-badge">
+            </div>
+            <div class="logo">
+                <img src="logo/logo2.png" alt="Logo Badge" class="logo-badge">
+                Underworld <span>Technology</span>
+            </div>
+            <nav class="nav-links" id="navLinks">
+                <ul>
+                    <li><a href="index.html">platform</a></li>
+                    <li><a href="solution.html">solutions</a></li>
+                    <li><a href="company.html">company</a></li>
+                    <li><a href="support.html">support</a></li>
+                </ul>
+            </nav>
+            <button class="menu-toggle" id="menuToggle" aria-label="Toggle navigation">
+                <span class="bar"></span>
+                <span class="bar"></span>
+                <span class="bar"></span>
+            </button>
+            <div class="user-profile" id="userProfile" style="display:none; position:relative;">
+                <img src="https://ui-avatars.com/api/?name=User" alt="Profile" class="profile-pic" id="profilePic">
+                <span class="user-name" id="userName"></span>
+                <div class="profile-dropdown" id="profileDropdown">
+                    <div class="dropdown-item"><strong>Account Status:</strong> <span id="accountStatus">Active</span></div>
+                    <div class="dropdown-item"><strong>Subscription:</strong> <span id="subscriptionStatus">No subscription. Please subscribe a plan.</span></div>
+                    <button class="logout-btn" id="logoutBtn">Log Out</button>
+                    <button class="delete-account-btn" id="deleteAccountBtn">Delete Account</button>
+                </div>
+            </div>
+        </div>
+    </header>
+    <main>
+        <section class="services-hero-section">
+            <div class="container">
+                <h1 class="hero-title">Our Services</h1>
+                <p class="hero-description">Explore the range of services we offer to protect and empower your data.</p>
+                
+                <h2 class="services-section-title">Regular Services <span class="service-section-badge free">(Free for 3 months)</span></h2>
+                <div class="services-list">
+                    <div class="service-card">
+                        <h3>Data Protection</h3>
+                        <p>Advanced encryption and security protocols to keep your data safe.</p>
+                        <div class="service-pricing">
+                            <span class="service-badge free">Free for 3 months</span><br>
+                            <span class="service-price">Ksh 499/month or Ksh 4,999/year after trial</span>
+                        </div>
+                    </div>
+                    <div class="service-card">
+                        <h3>Cloud Backup</h3>
+                        <p>Automatic and secure cloud backups for your important files.</p>
+                        <div class="service-pricing">
+                            <span class="service-badge free">Free for 3 months</span><br>
+                            <span class="service-price">Ksh 499/month or Ksh 4,999/year after trial</span>
+                        </div>
+                    </div>
+                </div>
+                
+                <h2 class="services-section-title">Premium Services <span class="service-section-badge premium">(Subscription)</span></h2>
+                <div class="services-list">
+                    <div class="service-card premium">
+                        <h3>Threat Monitoring</h3>
+                        <p>24/7 monitoring to detect and respond to cyber threats in real time.</p>
+                        <div class="service-pricing">
+                            <span class="service-price">Ksh 1,999/month or Ksh 19,999/year</span>
+                        </div>
+                        <button class="subscribe-btn">Subscribe</button>
+                    </div>
+                    <div class="service-card premium">
+                        <h3>Consulting</h3>
+                        <p>Expert advice and solutions tailored to your business needs.</p>
+                        <div class="service-pricing">
+                            <span class="service-price">Ksh 1,999/month or Ksh 19,999/year</span>
+                        </div>
+                        <button class="subscribe-btn">Subscribe</button>
+                    </div>
+                    <div class="service-card premium">
+                        <h3>Disaster Recovery</h3>
+                        <p>Comprehensive plans and support to recover from data loss events.</p>
+                        <div class="service-pricing">
+                            <span class="service-price">Ksh 1,999/month or Ksh 19,999/year</span>
+                        </div>
+                        <button class="subscribe-btn">Subscribe</button>
+                    </div>
+                    <div class="service-card premium">
+                        <h3>Advanced Analytics</h3>
+                        <p>In-depth analysis and reporting to optimize your data security.</p>
+                        <div class="service-pricing">
+                            <span class="service-price">Ksh 1,999/month or Ksh 19,999/year</span>
+                        </div>
+                        <button class="subscribe-btn">Subscribe</button>
+                    </div>
+                    <div class="service-card premium">
+                        <h3>Priority Support</h3>
+                        <p>Get fast, 24/7 access to our expert support team for urgent issues.</p>
+                        <div class="service-pricing">
+                            <span class="service-price">Ksh 1,999/month or Ksh 19,999/year</span>
+                        </div>
+                        <button class="subscribe-btn">Subscribe</button>
+                    </div>
+                    <div class="service-card premium">
+                        <h3>Custom Integrations</h3>
+                        <p>Tailored integrations with your existing tools and workflows.</p>
+                        <div class="service-pricing">
+                            <span class="service-price">Ksh 1,999/month or Ksh 19,999/year</span>
+                        </div>
+                        <button class="subscribe-btn">Subscribe</button>
+                    </div>
+                </div>
+                </div>
+        </section>
+    </main>
+    <script type="module">
+        import { getAuth, onAuthStateChanged, signOut, deleteUser } from "https://www.gstatic.com/firebasejs/11.9.1/firebase-auth.js";
+        import { getFirestore, doc, getDoc, deleteDoc } from "https://www.gstatic.com/firebasejs/11.9.1/firebase-firestore.js";
+        import { initializeApp } from "https://www.gstatic.com/firebasejs/11.9.1/firebase-app.js";
+
+        const firebaseConfig = {
+            apiKey: "AIzaSyBjg4BmX1t0kPPZHBgn39qMh0KxLXGdnxY",
+            authDomain: "login-37da6.firebaseapp.com",
+            projectId: "login-37da6",
+            storageBucket: "login-37da6.appspot.com",
+            messagingSenderId: "976257188489",
+            appId: "1:976257188489:web:8ea88e1e7c33f4a1867c58"
+        };
+        const app = initializeApp(firebaseConfig);
+
+        const userProfile = document.getElementById('userProfile');
+        const userName = document.getElementById('userName');
+        const profilePic = document.getElementById('profilePic');
+        const accountStatus = document.getElementById('accountStatus');
+        const subscriptionStatus = document.getElementById('subscriptionStatus');
+        const profileDropdown = document.getElementById('profileDropdown');
+        const logoutBtn = document.getElementById('logoutBtn');
+        const deleteAccountBtn = document.getElementById('deleteAccountBtn');
+        const menuToggle = document.getElementById('menuToggle');
+        const navLinks = document.getElementById('navLinks');
+
+        const auth = getAuth(app);
+        const db = getFirestore(app);
+
+        // Toggle dropdown on profile click
+        if (userProfile) {
+            userProfile.addEventListener('click', (e) => {
+                e.stopPropagation();
+                userProfile.classList.toggle('open');
+            });
+            document.addEventListener('click', () => {
+                userProfile.classList.remove('open');
+            });
+        }
+
+        // Toggle mobile menu
+        if (menuToggle && navLinks) {
+            menuToggle.addEventListener('click', (e) => {
+                e.stopPropagation();
+                navLinks.classList.toggle('open');
+            });
+            // Optional: close menu when clicking outside or on a link
+            document.addEventListener('click', () => {
+                navLinks.classList.remove('open');
+            });
+            navLinks.addEventListener('click', (e) => {
+                if (e.target.tagName === 'A') navLinks.classList.remove('open');
+            });
+        }
+
+        // Auth state
+        onAuthStateChanged(auth, async (user) => {
+            if (user) {
+                userProfile.style.display = "flex";
+                userName.textContent = user.displayName || user.email.split('@')[0];
+                profilePic.src = user.photoURL || `https://ui-avatars.com/api/?name=${encodeURIComponent(user.displayName || user.email.split('@')[0])}`;
+                // Fetch subscription status from Firestore
+                try {
+                    const userDoc = await getDoc(doc(db, "users", user.uid));
+                    if (userDoc.exists()) {
+                        const data = userDoc.data();
+                        if (data.subscription && data.subscription === "active") {
+                            accountStatus.textContent = "Active";
+                            subscriptionStatus.textContent = "Premium subscription active.";
+                        } else {
+                            accountStatus.textContent = "Passive";
+                            subscriptionStatus.textContent = "No subscription. Please subscribe a plan.";
+                        }
+                    } else {
+                        accountStatus.textContent = "Passive";
+                        subscriptionStatus.textContent = "No subscription. Please subscribe a plan.";
+                    }
+                } catch (e) {
+                    accountStatus.textContent = "Passive";
+                    subscriptionStatus.textContent = "No subscription. Please subscribe a plan.";
+                }
+            } else {
+                userProfile.style.display = "none";
+            }
+        });
+
+        // Log out
+        if (logoutBtn) {
+            logoutBtn.addEventListener('click', async () => {
+                await signOut(auth);
+                window.location.href = "index.html";
+            });
+        }
+
+        // Delete account
+        if (deleteAccountBtn) {
+            deleteAccountBtn.addEventListener('click', async () => {
+                if (confirm("Are you sure you want to delete your account? This action cannot be undone.")) {
+                    try {
+                        const user = auth.currentUser;
+                        if (user) {
+                            // Delete user data from Firestore
+                            await deleteDoc(doc(db, "users", user.uid));
+                            // Delete the user account
+                            await deleteUser(user);
+                            alert("Your account and all data have been deleted.");
+                            window.location.href = "index.html";
+                        }
+                    } catch (error) {
+                        alert("Error deleting account: " + (error.message || error));
+                    }
+                }
+            });
+        }
+    </script>
+    <footer class="footer-section">
+        <div class="container">
+            <p>&copy; 2023 Underworld Technology. All rights reserved. | Data Security Solutions in Kenya</p>
+        </div>
+    </footer>
+
+</body>
+</html>
