@@ -1,4 +1,36 @@
-<!DOCTYPE html>
+<!-- ...existing code... -->
+<header class="navbar">
+    <div class="container">
+        <div class="logo">
+            <img src="logo/logo2.png" alt="Logo Badge" class="logo-badge">
+            Underworld <span>Technology</span>
+        </div>
+        <button class="hamburger" id="hamburger-btn" aria-label="Open navigation">
+            <span></span>
+            <span></span>
+            <span></span>
+        </button>
+        <nav class="nav-links" id="nav-links">
+            <ul>
+                <li><a href="index.html">platform</a></li>
+                <li><a href="index.html#solutions">solutions</a></li> 
+                <li><a href="company.html">company</a></li>
+                <li><a href="index.html#support">support</a></li>
+            </ul>
+        </nav>
+    </div>
+</header>
+<!-- ...existing code... -->
+
+<!-- Add before closing </body> tag -->
+<script>
+    const hamburger = document.getElementById('hamburger-btn');
+    const navLinks = document.getElementById('nav-links');
+    hamburger.addEventListener('click', () => {
+        navLinks.classList.toggle('active');
+        hamburger.classList.toggle('active');
+    });
+</script><!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="UTF-8">
