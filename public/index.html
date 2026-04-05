@@ -1,84 +1,138 @@
 <!DOCTYPE html>
 <html lang="en">
-  <head>
-    <meta charset="utf-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1">
-    <title>Welcome to Firebase Hosting</title>
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Underworld - Protect Your Data</title>
+    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap">
+</head>
+<body>
+    <header class="navbar">
+  <div class="container header-flex">
+    <a href="index.html" class="logo-area">
+      <img src="logo/logo2.png" alt="Underworld Technology Logo" class="logo-badge">
+      <span class="brand-title">Underworld <span class="highlight">Technology</span></span>
+    </a>
+    <nav class="nav-links" id="navLinks" aria-label="Main navigation">
+      <ul>
+        <li><a href="index.html">Platform</a></li>
+        <li><a href="solution.html">Solutions</a></li>
+        <li><a href="company.html">Company</a></li>
+        <li><a href="support.html">Support</a></li>
+        <li><a href="sign up.html">Services</a></li>
+      </ul>
+    </nav>
+    <button class="get-started-btn" onclick="window.location.href='sign up.html'">Get Started</button>
+    <button class="menu-toggle" id="menuToggle" aria-label="Open navigation menu" aria-expanded="false">
+      <span class="bar"></span>
+      <span class="bar"></span>
+      <span class="bar"></span>
+    </button>
+  </div>
+</header>
 
-    <!-- update the version number as needed -->
-    <script defer src="/__/firebase/11.9.1/firebase-app-compat.js"></script>
-    <!-- include only the Firebase features as you need -->
-    <script defer src="/__/firebase/11.9.1/firebase-auth-compat.js"></script>
-    <script defer src="/__/firebase/11.9.1/firebase-database-compat.js"></script>
-    <script defer src="/__/firebase/11.9.1/firebase-firestore-compat.js"></script>
-    <script defer src="/__/firebase/11.9.1/firebase-functions-compat.js"></script>
-    <script defer src="/__/firebase/11.9.1/firebase-messaging-compat.js"></script>
-    <script defer src="/__/firebase/11.9.1/firebase-storage-compat.js"></script>
-    <script defer src="/__/firebase/11.9.1/firebase-analytics-compat.js"></script>
-    <script defer src="/__/firebase/11.9.1/firebase-remote-config-compat.js"></script>
-    <script defer src="/__/firebase/11.9.1/firebase-performance-compat.js"></script>
-    <!-- 
-      initialize the SDK after all desired features are loaded, set useEmulator to false
-      to avoid connecting the SDK to running emulators.
-    -->
-    <script defer src="/__/firebase/init.js?useEmulator=true"></script>
+    <main>
+        <section class="hero-section">
+            <div class="container">
+                <h1 class="hero-title">Protect Your <br> Data Today.</h1>
+                <p class="hero-description">We're guarding your data with utmost care, empowering you with privacy everywhere.</p>
+                <div class="hero-stats">
+                    <div class="stat-item">
+                        <span class="stat-number">+1.5b</span>
+                        <span class="stat-text">data points protected</span>
+                    </div>
+                    <div class="stat-item">
+                        <span class="stat-number">+65k</span>
+                        <span class="stat-text">therapists using our service</span>
+                    </div>
+                    <div class="stat-item">
+                        <span class="stat-number">+300k</span>
+                        <span class="stat-text">downloads worldwide</span>
+                    </div>
+                </div>
+                <div class="hero-info-card">
+                    <p>By partnering with a security provider, a company can significantly enhance the protection of its sensitive data. This includes implementing robust cybersecurity measures, preventing unauthorized access, data breaches, and cyberattacks.</p>
+                </div>
+            </div>
+            <div class="hero-background-shapes"></div>
+        </section>
 
-    <style media="screen">
-      body { background: #ECEFF1; color: rgba(0,0,0,0.87); font-family: Roboto, Helvetica, Arial, sans-serif; margin: 0; padding: 0; }
-      #message { background: white; max-width: 360px; margin: 100px auto 16px; padding: 32px 24px; border-radius: 3px; }
-      #message h2 { color: #ffa100; font-weight: bold; font-size: 16px; margin: 0 0 8px; }
-      #message h1 { font-size: 22px; font-weight: 300; color: rgba(0,0,0,0.6); margin: 0 0 16px;}
-      #message p { line-height: 140%; margin: 16px 0 24px; font-size: 14px; }
-      #message a { display: block; text-align: center; background: #039be5; text-transform: uppercase; text-decoration: none; color: white; padding: 16px; border-radius: 4px; }
-      #message, #message a { box-shadow: 0 1px 3px rgba(0,0,0,0.12), 0 1px 2px rgba(0,0,0,0.24); }
-      #load { color: rgba(0,0,0,0.4); text-align: center; font-size: 13px; }
-      @media (max-width: 600px) {
-        body, #message { margin-top: 0; background: white; box-shadow: none; }
-        body { border-top: 16px solid #ffa100; }
-      }
-    </style>
-  </head>
-  <body>
-    <div id="message">
-      <h2>Welcome</h2>
-      <h1>Firebase Hosting Setup Complete</h1>
-      <p>You're seeing this because you've successfully setup Firebase Hosting. Now it's time to go build something extraordinary!</p>
-      <a target="_blank" rel="noopener" href="https://firebase.google.com/docs/hosting/">Open Hosting Documentation</a>
-    </div>
-    <p id="load">Firebase SDK Loading&hellip;</p>
+        <section class="features-section">
+            <video class="features-background-video" autoplay loop muted playsinline>
+                <source src="logo/202587-918431513_tiny.mp4" type="video/mp4">
+                Your browser does not support the video tag.
+            </video>
+            <div class="container">
+                <p class="section-tagline">Protecting your data with cutting-edge technology, empowering you with privacy everywhere.</p>
+                <div class="feature-cards">
+                    <div class="feature-card">
+                        <span class="icon">⋆</span> Authentication
+                    </div>
+                    <div class="feature-card">
+                        <span class="icon">◇</span> Unified Security
+                    </div>
+                    <div class="feature-card">
+                        <img src="https://via.placeholder.com/24x24" alt="Western Union Logo" class="client-logo"> Western Union
+                    </div>
+                    <div class="feature-card">
+                        <img src="https://via.placeholder.com/24x24" alt="Dropbox Logo" class="client-logo"> Dropbox
+                    </div>
+                </div>
+                <button class="btn demo-btn" onclick="window.location.href='sign up.html'">Try Demo</button>
+            </div>
+        </section>
+
+        <section class="benefits-section">
+            <div class="container">
+                <h2 class="section-title">Our Key Benefits</h2>
+                <div class="benefit-cards">
+                    <div class="benefit-card">
+                        <h3>Proactive Threat Detection & Response</h3>
+                        <p>Our security providers continuously monitor networks, endpoints, and system activities to identify suspicious patterns or anomalies that may indicate a security breach, ensuring swift action.</p>
+                    </div>
+                    <div class="benefit-card">
+                        <h3>Expertise & Industry Knowledge</h3>
+                        <p>Our experts possess specialized knowledge and extensive experience in identifying and mitigating evolving security threats, ensuring the latest and most effective practices are always implemented.</p>
+                    </div>
+                    <div class="benefit-card">
+                        <h3>Comprehensive Data Protection</h3>
+                        <p>We offer a holistic approach to safeguarding your data, from advanced encryption to secure access controls, providing peace of mind against unauthorized access and cyberattacks.</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <footer class="footer-section">
+        <div class="container">
+            <p>&copy; 2025 Underworld Technology. All rights reserved. | Data Security Solutions in Kenya</p>
+            <p>Send an Email: <a href="mailto:underworldhacker7@gmail.com">underworldhacker7@gmail.com</a></p>
+        </div>
+    </footer>
 
     <script>
-      document.addEventListener('DOMContentLoaded', function() {
-        const loadEl = document.querySelector('#load');
-         firebase.auth().onAuthStateChanged(user => { });
-        firebase.database().ref('/path/to/ref').on('value', snapshot => { });
-        firebase.firestore().doc('/foo/bar').get().then(() => { });
-        firebase.functions().httpsCallable('yourFunction')().then(() => { });
-        firebase.messaging().requestPermission().then(() => { });
-         firebase.storage().ref('/path/to/ref').getDownloadURL().then(() => { });
-         firebase.analytics(); // call to activate
-        firebase.analytics().logEvent('tutorial_completed');
-        firebase.performance(); // call to activate
-        firebase.remoteConfig().fetchAndActivate().then(() => { });
-        try {
-          let app = firebase.app();
-          let features = [
-            'auth', 
-            'database', 
-            'firestore',
-            'functions',
-            'messaging', 
-            'storage', 
-            'analytics', 
-            'remoteConfig',
-            'performance',
-          ].filter(feature => typeof app[feature] === 'function');
-          loadEl.textContent = `Firebase SDK loaded with ${features.join(', ')}`;
-        } catch (e) {
-          console.error(e);
-          loadEl.textContent = 'Error loading the Firebase SDK, check the console.';
+        const menuToggle = document.getElementById('menuToggle');
+        const navLinks = document.getElementById('navLinks');
+
+        if (menuToggle && navLinks) {
+            menuToggle.addEventListener('click', (e) => {
+                e.stopPropagation();
+                navLinks.classList.toggle('open');
+            });
+
+            document.addEventListener('click', (e) => {
+                if (!navLinks.contains(e.target) && !menuToggle.contains(e.target)) {
+                    navLinks.classList.remove('open');
+                }
+            });
+
+            navLinks.addEventListener('click', (e) => {
+                if (e.target.tagName === 'A') {
+                    navLinks.classList.remove('open');
+                }
+            });
         }
-      });
     </script>
-  </body>
+</body>
 </html>
