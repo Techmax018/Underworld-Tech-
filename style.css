@@ -146,10 +146,41 @@ body {
 .chat-input { flex: 1; background: rgba(46,110,223,0.05); border: 1px solid var(--border-color); border-radius: 40px; padding: 12px 16px; color: white; outline: none; }
 .chat-send { background: var(--gradient-blue); border: none; width: 44px; height: 44px; border-radius: 50%; color: white; cursor: pointer; }
 
+.chat-close,
+.modal-close {
+    background: rgba(255,255,255,0.15);
+    border: none;
+    color: white;
+    width: 42px;
+    height: 42px;
+    border-radius: 50%;
+    display: grid;
+    place-items: center;
+    cursor: pointer;
+    transition: var(--transition);
+}
+
+.chat-close:hover,
+.modal-close:hover {
+    background: rgba(255,255,255,0.25);
+    transform: translateY(-1px);
+}
+
 /* Footer */
 .footer-section { background: var(--bg-card); border-top: 1px solid var(--border-color); padding: 60px 0 30px; }
 .footer-grid { display: grid; grid-template-columns: 2fr 1fr 1fr 1.5fr; gap: 40px; margin-bottom: 40px; }
+.footer-brand .footer-logo { display: flex; align-items: center; gap: 12px; margin-bottom: 20px; }
+.footer-brand .footer-logo i { font-size: 2rem; color: var(--blue-primary); }
+.footer-brand .footer-logo span { font-size: 1.3rem; font-weight: 700; }
+.footer-brand p { color: var(--secondary-text); font-size: 0.95rem; margin-bottom: 20px; }
+.footer-links h4, .footer-contact h4 { font-size: 1rem; margin-bottom: 20px; }
+.footer-links ul, .footer-contact ul { list-style: none; padding: 0; margin: 0; }
+.footer-links li, .footer-contact li { margin-bottom: 12px; color: var(--secondary-text); font-size: 0.95rem; }
+.footer-links a, .footer-contact a, .footer-legal a { color: var(--secondary-text); text-decoration: none; transition: var(--transition); }
+.footer-links a:hover, .footer-contact a:hover, .footer-legal a:hover { color: var(--blue-primary); }
+.footer-legal { display: flex; flex-wrap: wrap; gap: 16px; justify-content: center; margin-top: 16px; }
 .footer-bottom { padding-top: 30px; border-top: 1px solid var(--border-color); text-align: center; }
+.footer-bottom p { color: var(--secondary-text); font-size: 0.85rem; }
 .footer-luna-credit { margin-top: 8px; font-size: 0.7rem; color: var(--blue-primary); }
 
 /* Responsive */

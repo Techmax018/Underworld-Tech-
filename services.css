@@ -184,6 +184,12 @@ body {
 .confirm-payment { background: var(--gradient-blue); color: white; }
 .cancel-payment { background: transparent; border: 1px solid var(--border-color); color: var(--secondary-text); }
 
+.footer { background: var(--bg-card); border-top: 1px solid var(--border-color); padding: 40px 0; text-align: center; }
+.footer-bottom { padding-top: 20px; border-top: 1px solid var(--border-color); color: var(--secondary-text); font-size: 0.85rem; }
+.footer-legal { display: flex; flex-wrap: wrap; gap: 14px; justify-content: center; margin-top: 12px; }
+.footer-legal a { color: var(--secondary-text); text-decoration: none; transition: var(--transition); }
+.footer-legal a:hover { color: var(--blue-primary); }
+
 /* Responsive */
 @media (max-width: 992px) {
     .sidebar { transform: translateX(-100%); }
