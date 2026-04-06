@@ -111,9 +111,14 @@
     <footer class="footer">
         <div class="container">
             <div class="footer-bottom">
-                <p>&copy; 2025 Underworld Technology. All rights reserved.</p>
-                <div class="footer-legal"><a href="policy.html#privacy">Privacy Policy</a><a href="policy.html#terms">Terms of Service</a><a href="policy.html#cookies">Cookie Policy</a></div>
-            </div>
+    <p>&copy; <span id="currentYear">2025</span> Underworld Technology. All rights reserved.</p>
+    <div class="footer-legal"><a href="policy.html#privacy">Privacy Policy</a><a href="policy.html#terms">Terms of Service</a><a href="policy.html#cookies">Cookie Policy</a></div>
+</div>
+
+<script>
+    // Auto-update copyright year to current year
+    document.getElementById('currentYear').textContent = new Date().getFullYear();
+</script>
         </div>
     </footer>
     <script type="module" src="dashboard.js"></script>
