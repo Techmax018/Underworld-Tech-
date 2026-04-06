@@ -1,96 +1,285 @@
-<!-- ...existing code... -->
-<header class="navbar">
-    <div class="container">
-        <div class="logo">
-            <img src="logo/logo2.png" alt="Logo Badge" class="logo-badge">
-            Underworld <span>Technology</span>
-        </div>
-        <button class="hamburger" id="hamburger-btn" aria-label="Open navigation">
-            <span></span>
-            <span></span>
-            <span></span>
-        </button>
-        <nav class="nav-links" id="nav-links">
-            <ul>
-                <li><a href="index.html">platform</a></li>
-                <li><a href="index.html#solutions">solutions</a></li> 
-                <li><a href="company.html">company</a></li>
-                <li><a href="index.html#support">support</a></li>
-            </ul>
-        </nav>
-    </div>
-</header>
-<!-- ...existing code... -->
-
-<!-- Add before closing </body> tag -->
-<script>
-    const hamburger = document.getElementById('hamburger-btn');
-    const navLinks = document.getElementById('nav-links');
-    hamburger.addEventListener('click', () => {
-        navLinks.classList.toggle('active');
-        hamburger.classList.toggle('active');
-    });
-</script><!DOCTYPE html>
+<!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Underworld Technology - Company</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
+    <title>Underworld Technology | About Us - Cybersecurity Leaders in Kenya</title>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:opsz,wght@14..32,300;400;500;600;700;800&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
     <link rel="stylesheet" href="company.css">
-    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap">
 </head>
 <body>
-    <header class="navbar">
+    <header class="navbar" id="navbar">
         <div class="container">
             <div class="logo">
-                <img src="logo/logo2.png" alt="Logo Badge" class="logo-badge">
+                <svg class="logo-badge" viewBox="0 0 40 40" fill="none" xmlns="http://www.w3.org/2000/svg">
+                    <path d="M20 4L32 12V28L20 36L8 28V12L20 4Z" stroke="url(#grad)" stroke-width="1.5" fill="rgba(46,110,223,0.2)" />
+                    <circle cx="20" cy="20" r="6" fill="url(#grad)" stroke="white" stroke-width="1" />
+                    <defs><linearGradient id="grad" x1="8" y1="4" x2="32" y2="36" gradientUnits="userSpaceOnUse"><stop stop-color="#2e6edf"/><stop offset="1" stop-color="#8b5cf6"/></linearGradient></defs>
+                </svg>
                 Underworld <span>Technology</span>
             </div>
-            <nav class="nav-links">
+            <nav class="nav-links" id="navLinks">
                 <ul>
-                    <li><a href="index.html">platform</a></li>
-                    <li><a href="index.html#solutions">solutions</a></li> 
-                    <li><a href="company.html">company</a></li>
-                    <li><a href="index.html#support">support</a></li> </ul>
+                    <li><a href="index.html">Platform</a></li>
+                    <li><a href="solution.html">Solutions</a></li>
+                    <li><a href="company.html" class="active">Company</a></li>
+                    <li><a href="support.html">Support</a></li>
+                    <li><a href="services.html">Dashboard</a></li>
+                </ul>
             </nav>
+            <button class="menu-toggle" id="menuToggle"><span class="bar"></span><span class="bar"></span><span class="bar"></span></button>
+            <button class="get-started-btn" onclick="window.location.href='sign up.html'">Get Started</button>
         </div>
     </header>
 
     <main>
-        <section class="company-section">
+        <!-- Hero Section -->
+        <section class="company-hero">
             <div class="container">
-                <h2 class="section-title">About Underworld Technology</h2>
-                <p class="company-mission">Our mission at Underworld Technology is to empower individuals and businesses in Kenya with cutting-edge cybersecurity solutions, ensuring their digital safety and privacy in an ever-evolving threat landscape.</p>
-
-                <div class="company-values">
-                    <h3>Our Core Values</h3>
-                    <ul>
-                        <li>Integrity: We operate with the highest ethical standards and transparency.</li>
-                        <li>Innovation: We continuously strive to develop and implement the latest security technologies.</li>
-                        <li>Client Focus: We prioritize the needs and security of our clients in Kenya.</li>
-                        <li>Expertise: Our team comprises experienced cybersecurity professionals.</li>
-                    </ul>
+                <div class="hero-content">
+                    <span class="hero-badge"><i class="fas fa-shield-alt"></i> About Us</span>
+                    <h1 class="hero-title">Securing Kenya's <span class="gradient-text">Digital Future</span></h1>
+                    <p class="hero-description">Underworld Technology is Kenya's premier cybersecurity firm, dedicated to protecting businesses and individuals from evolving digital threats with cutting-edge solutions and unwavering commitment.</p>
+                    <div class="hero-stats">
+                        <div class="hero-stat"><span class="stat-number">2019</span><span class="stat-label">Founded</span></div>
+                        <div class="hero-stat"><span class="stat-number">500+</span><span class="stat-label">Clients</span></div>
+                        <div class="hero-stat"><span class="stat-number">100%</span><span class="stat-label">Data Protection</span></div>
+                    </div>
                 </div>
+            </div>
+            <div class="hero-background-shapes">
+                <div class="shape shape-1"></div>
+                <div class="shape shape-2"></div>
+            </div>
+        </section>
 
-                <div class="company-team">
-                    <h3>Our Team</h3>
-                    <div class="team-members">
-                        <div class="team-member">
-                            <img src="logo/DSC_0561f.jpg" alt="Team Member 1">
-                            <h4>Max Njuguna</h4>
-                            <p>CEO</p>
-                        </div>
-                        <div class="team-member">
-                            <img src="logo/IMG-20241120-WA0032.jpg" alt="Team Member 2">
-                            <h4>Grece Garama</h4>
-                            <p>Lead Security Analyst</p>
-                        </div>
-                        </div>
+        <!-- Mission Section -->
+        <section class="mission-section">
+            <div class="container">
+                <div class="mission-wrapper">
+                    <div class="mission-icon"><i class="fas fa-bullseye"></i></div>
+                    <h2 class="section-title">Our Mission</h2>
+                    <p class="mission-text">To empower individuals and businesses in Kenya with cutting-edge cybersecurity solutions, ensuring their digital safety and privacy in an ever-evolving threat landscape. We believe that security is not just a product—it's a fundamental right.</p>
+                    <div class="mission-tags">
+                        <span class="mission-tag"><i class="fas fa-shield-alt"></i> Protection First</span>
+                        <span class="mission-tag"><i class="fas fa-lock"></i> Privacy Guaranteed</span>
+                        <span class="mission-tag"><i class="fas fa-chart-line"></i> Innovation Driven</span>
+                    </div>
                 </div>
+            </div>
+        </section>
 
-                <p class="company-location">Proudly serving Kenya.</p>
+        <!-- Core Values Section -->
+        <section class="values-section">
+            <div class="container">
+                <div class="section-header">
+                    <span class="section-subtitle">What We Stand For</span>
+                    <h2 class="section-title">Our Core Values</h2>
+                    <p class="section-description">These principles guide everything we do at Underworld Technology</p>
+                </div>
+                <div class="values-grid">
+                    <div class="value-card">
+                        <div class="value-icon"><i class="fas fa-handshake"></i></div>
+                        <h3>Integrity</h3>
+                        <p>We operate with the highest ethical standards and complete transparency. Trust is the foundation of every relationship we build.</p>
+                    </div>
+                    <div class="value-card">
+                        <div class="value-icon"><i class="fas fa-lightbulb"></i></div>
+                        <h3>Innovation</h3>
+                        <p>We continuously strive to develop and implement the latest security technologies to stay ahead of emerging threats.</p>
+                    </div>
+                    <div class="value-card">
+                        <div class="value-icon"><i class="fas fa-users"></i></div>
+                        <h3>Client Focus</h3>
+                        <p>We prioritize the needs and security of our clients in Kenya, delivering personalized solutions that truly matter.</p>
+                    </div>
+                    <div class="value-card">
+                        <div class="value-icon"><i class="fas fa-chart-line"></i></div>
+                        <h3>Excellence</h3>
+                        <p>Our team comprises experienced cybersecurity professionals dedicated to delivering exceptional results.</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Team Section - Enhanced -->
+        <section class="team-section">
+            <div class="container">
+                <div class="section-header">
+                    <span class="section-subtitle">Meet The Experts</span>
+                    <h2 class="section-title">Our Leadership Team</h2>
+                    <p class="section-description">Passionate professionals dedicated to securing Kenya's digital landscape</p>
+                </div>
+                <div class="team-grid">
+                    <div class="team-card">
+                        <div class="team-image">
+                            <img src="logo/DSC_0561f.jpg" alt="Max Njuguna - CEO" onerror="this.src='https://ui-avatars.com/api/?name=Max+Njuguna&background=2e6edf&color=fff&size=200&bold=true'">
+                            <div class="team-overlay">
+                                <div class="team-social">
+                                    <a href="https://www.linkedin.com/in/max-njuguna-35741a385" target="_blank"><i class="fab fa-linkedin-in"></i></a>
+                                    <a href="#"><i class="fab fa-twitter"></i></a>
+                                    <a href="#"><i class="fas fa-envelope"></i></a>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="team-info">
+                            <h3>Max Njuguna</h3>
+                            <p class="team-role">Chief Executive Officer</p>
+                            <p class="team-bio">Visionary leader with over 15 years of experience in cybersecurity and digital transformation across Africa.</p>
+                            <div class="team-skills">
+                                <span>Leadership</span>
+                                <span>Strategy</span>
+                                <span>Innovation</span>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="team-card">
+                        <div class="team-image">
+                            <img src="logo/IMG-20241120-WA0032.jpg" alt="Grace Garama - Lead Security Analyst" onerror="this.src='https://ui-avatars.com/api/?name=Grece+Garama&background=2e6edf&color=fff&size=200&bold=true'">
+                            <div class="team-overlay">
+                                <div class="team-social">
+                                    <a href="#"><i class="fab fa-linkedin-in"></i></a>
+                                    <a href="#"><i class="fab fa-twitter"></i></a>
+                                    <a href="#"><i class="fas fa-envelope"></i></a>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="team-info">
+                            <h3>Grace Garama</h3>
+                            <p class="team-role">Lead Security Analyst</p>
+                            <p class="team-bio">Certified ethical hacker and threat intelligence specialist with expertise in incident response and forensics.</p>
+                            <div class="team-skills">
+                                <span>Threat Hunting</span>
+                                <span>Forensics</span>
+                                <span>AI Security</span>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="team-card">
+                        <div class="team-image">
+                            <img src="https://ui-avatars.com/api/?name=Victor+Kanyoro&background=2e6edf&color=fff&size=200&bold=true" alt="Victor KanyoroS - CTO">
+                            <div class="team-overlay">
+                                <div class="team-social">
+                                    <a href="#"><i class="fab fa-linkedin-in"></i></a>
+                                    <a href="#"><i class="fab fa-twitter"></i></a>
+                                    <a href="#"><i class="fas fa-envelope"></i></a>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="team-info">
+                            <h3>Victor Kanyoro</h3>
+                            <p class="team-role">Chief Technology Officer</p>
+                            <p class="team-bio">Tech architect driving innovation in cloud security and zero-trust infrastructure solutions.</p>
+                            <div class="team-skills">
+                                <span>Cloud Security</span>
+                                <span>DevSecOps</span>
+                                <span>Architecture</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Achievements Section -->
+        <section class="achievements-section">
+            <div class="container">
+                <div class="achievements-wrapper">
+                    <div class="achievement-item"><i class="fas fa-trophy"></i><span class="achievement-number">25+</span><span class="achievement-label">Industry Awards</span></div>
+                    <div class="achievement-item"><i class="fas fa-certificate"></i><span class="achievement-number">100%</span><span class="achievement-label">Client Satisfaction</span></div>
+                    <div class="achievement-item"><i class="fas fa-globe-africa"></i><span class="achievement-number">10+</span><span class="achievement-label">Countries Served</span></div>
+                    <div class="achievement-item"><i class="fas fa-clock"></i><span class="achievement-number">24/7</span><span class="achievement-label">Support Available</span></div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Location & Contact Section -->
+        <section class="location-section">
+            <div class="container">
+                <div class="location-wrapper">
+                    <div class="location-info">
+                        <div class="location-icon"><i class="fas fa-map-marker-alt"></i></div>
+                        <h3>Proudly Serving Kenya</h3>
+                        <p>Headquartered in Nairobi, we deliver world-class cybersecurity solutions across the nation and beyond.</p>
+                        <div class="contact-details">
+                            <div class="contact-item"><i class="fas fa-building"></i><span>Westlands, Nairobi, Kenya</span></div>
+                            <div class="contact-item"><i class="fas fa-phone-alt"></i><span>+254 703 161 031</span></div>
+                            <div class="contact-item"><i class="fas fa-envelope"></i><a href="mailto:underworldhacker7@gmail.com">underworldhacker7@gmail.com</a></div>
+                        </div>
+                        <button class="contact-btn" onclick="window.location.href='mailto:underworldhacker7@gmail.com'"><i class="fas fa-paper-plane"></i> Get in Touch</button>
+                    </div>
+                    <div class="location-map">
+                        <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3988.846304521728!2d36.798192!3d-1.267421!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x182f1741b4c9f9f7%3A0x2b8c9e8f0e1a2b3c!2sNairobi%2C%20Kenya!5e0!3m2!1sen!2ske!4v1700000000000!5m2!1sen!2ske" width="100%" height="300" style="border:0; border-radius: 20px;" allowfullscreen="" loading="lazy"></iframe>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Call to Action -->
+        <section class="cta-section">
+            <div class="container">
+                <div class="cta-wrapper">
+                    <h2>Ready to Secure Your Digital Future?</h2>
+                    <p>Join hundreds of businesses in Kenya that trust Underworld Technology for their cybersecurity needs.</p>
+                    <div class="cta-buttons">
+                        <button class="btn-primary" onclick="window.location.href='sign up.html'"><i class="fas fa-shield-alt"></i> Get Started Today</button>
+                        <button class="btn-secondary" onclick="window.location.href='support.html'"><i class="fas fa-comments"></i> Contact Sales</button>
+                    </div>
+                </div>
             </div>
         </section>
     </main>
+
+    <footer class="footer">
+        <div class="container">
+            <div class="footer-grid">
+                <div class="footer-brand">
+                    <div class="footer-logo"><i class="fas fa-shield-hooded"></i><span>Underworld <span>Technology</span></span></div>
+                    <p>Protecting Kenya's digital landscape with cutting-edge cybersecurity solutions.</p>
+                    <div class="footer-social"><a href="#"><i class="fab fa-linkedin-in"></i></a><a href="#"><i class="fab fa-twitter"></i></a><a href="#"><i class="fab fa-facebook-f"></i></a><a href="#"><i class="fab fa-instagram"></i></a></div>
+                </div>
+                <div class="footer-links"><h4>Quick Links</h4><ul><li><a href="index.html">Platform</a></li><li><a href="services.html">Services</a></li><li><a href="support.html">Support</a></li><li><a href="dashboard.html">Dashboard</a></li></ul></div>
+                <div class="footer-links"><h4>Legal</h4><ul><li><a href="#">Privacy Policy</a></li><li><a href="#">Terms of Service</a></li><li><a href="#">Cookie Policy</a></li></ul></div>
+                <div class="footer-contact"><h4>Contact</h4><ul><li><i class="fas fa-envelope"></i> <a href="mailto:underworldhacker7@gmail.com">underworldhacker7@gmail.com</a></li><li><i class="fas fa-phone-alt"></i> +254 703 161 031</li><li><i class="fas fa-map-marker-alt"></i> Nairobi, Kenya</li></ul></div>
+            </div>
+            <div class="footer-bottom"><p>&copy; 2025 Underworld Technology. All rights reserved. | Securing Kenya's digital frontier</p></div>
+        </div>
+    </footer>
+
+    <script>
+        // Mobile menu toggle
+        const menuToggle = document.getElementById('menuToggle');
+        const navLinks = document.getElementById('navLinks');
+        if (menuToggle && navLinks) {
+            menuToggle.addEventListener('click', (e) => {
+                e.stopPropagation();
+                navLinks.classList.toggle('open');
+                menuToggle.classList.toggle('active');
+            });
+            document.addEventListener('click', () => {
+                navLinks.classList.remove('open');
+                menuToggle.classList.remove('active');
+            });
+        }
+
+        // Navbar scroll effect
+        window.addEventListener('scroll', () => {
+            const navbar = document.getElementById('navbar');
+            if (window.scrollY > 50) {
+                navbar.classList.add('scrolled');
+            } else {
+                navbar.classList.remove('scrolled');
+            }
+        });
+
+        // Image error handling
+        document.querySelectorAll('.team-image img').forEach(img => {
+            img.addEventListener('error', function() {
+                const name = this.alt.split(' - ')[0];
+                this.src = `https://ui-avatars.com/api/?name=${encodeURIComponent(name || 'Team Member')}&background=2e6edf&color=fff&size=200&bold=true`;
+            });
+        });
+    </script>
 </body>
 </html>

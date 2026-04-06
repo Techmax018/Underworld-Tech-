@@ -2,57 +2,93 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Underworld - Protect Your Data</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
+    <title>Underworld | Fortress-Grade Data Protection with Luna AI</title>
+    <meta name="description" content="Underworld Technology provides cutting-edge cybersecurity solutions with Luna, your AI security assistant. Protect your data with zero-trust architecture and military-grade encryption.">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:opsz,wght@14..32,300;14..32,400;14..32,500;14..32,600;14..32,700;14..32,800&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
     <link rel="stylesheet" href="style.css">
-    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap">
 </head>
 <body>
-    <header class="navbar">
-  <div class="container header-flex">
-    <a href="index.html" class="logo-area">
-      <img src="logo/logo2.png" alt="Underworld Technology Logo" class="logo-badge">
-      <span class="brand-title">Underworld <span class="highlight">Technology</span></span>
-    </a>
-    <nav class="nav-links" id="navLinks" aria-label="Main navigation">
-      <ul>
-        <li><a href="index.html">Platform</a></li>
-        <li><a href="solution.html">Solutions</a></li>
-        <li><a href="company.html">Company</a></li>
-        <li><a href="support.html">Support</a></li>
-        <li><a href="sign up.html">Services</a></li>
-      </ul>
-    </nav>
-    <button class="get-started-btn" onclick="window.location.href='sign up.html'">Get Started</button>
-    <button class="menu-toggle" id="menuToggle" aria-label="Open navigation menu" aria-expanded="false">
-      <span class="bar"></span>
-      <span class="bar"></span>
-      <span class="bar"></span>
-    </button>
-  </div>
-</header>
+    <header class="navbar" id="navbar">
+        <div class="container">
+            <div class="logo">
+                <svg class="logo-badge" viewBox="0 0 40 40" fill="none" xmlns="http://www.w3.org/2000/svg">
+                    <path d="M20 4L32 12V28L20 36L8 28V12L20 4Z" stroke="url(#grad)" stroke-width="1.5" fill="rgba(46,110,223,0.2)" />
+                    <circle cx="20" cy="20" r="6" fill="url(#grad)" stroke="white" stroke-width="1" />
+                    <defs>
+                        <linearGradient id="grad" x1="8" y1="4" x2="32" y2="36" gradientUnits="userSpaceOnUse">
+                            <stop stop-color="#2e6edf" />
+                            <stop offset="1" stop-color="#8b5cf6" />
+                        </linearGradient>
+                    </defs>
+                </svg>
+                Underworld <span>Technology</span>
+            </div>
+            <nav class="nav-links" id="navLinks">
+                <ul>
+                    <li><a href="index.html" class="active">Platform</a></li>
+                    <li><a href="solution.html">Solutions</a></li>
+                    <li><a href="company.html">Company</a></li>
+                    <li><a href="support.html">Support</a></li>
+                    <li><a href="services.html">Dashboard</a></li>
+                </ul>
+            </nav>
+            <button class="menu-toggle" id="menuToggle" aria-label="Toggle navigation">
+                <span class="bar"></span>
+                <span class="bar"></span>
+                <span class="bar"></span>
+            </button>
+            <button class="get-started-btn" id="getStartedBtn">Get Started</button>
+        </div>
+    </header>
 
     <main>
         <section class="hero-section">
             <div class="container">
-                <h1 class="hero-title">Protect Your <br> Data Today.</h1>
-                <p class="hero-description">We're guarding your data with utmost care, empowering you with privacy everywhere.</p>
-                <div class="hero-stats">
-                    <div class="stat-item">
-                        <span class="stat-number">+1.5b</span>
-                        <span class="stat-text">data points protected</span>
+                <div class="hero-grid">
+                    <div class="hero-content">
+                        <div class="luna-welcome-badge">
+                            <i class="fas fa-moon"></i>
+                            <span>Luna AI is here to help!</span>
+                        </div>
+                        <h1 class="hero-title">Fortify Your <br> Digital Perimeter.</h1>
+                        <p class="hero-description">Zero-trust architecture meets next-gen encryption. We don't just guard data — we make it untouchable.</p>
+                        <div class="hero-stats">
+                            <div class="stat-item">
+                                <span class="stat-number">+1.5B</span>
+                                <span class="stat-text">data points secured</span>
+                            </div>
+                            <div class="stat-item">
+                                <span class="stat-number">+65K</span>
+                                <span class="stat-text">enterprise clients</span>
+                            </div>
+                            <div class="stat-item">
+                                <span class="stat-number">+300K</span>
+                                <span class="stat-text">global deployments</span>
+                            </div>
+                        </div>
+                        <div class="hero-buttons">
+                            <button class="btn-primary" id="heroGetStartedBtn">Get Started <i class="fas fa-arrow-right"></i></button>
+                            <button class="btn-secondary" id="heroDemoBtn">Watch Demo <i class="fas fa-play"></i></button>
+                        </div>
                     </div>
-                    <div class="stat-item">
-                        <span class="stat-number">+65k</span>
-                        <span class="stat-text">therapists using our service</span>
+                    <div class="hero-image">
+                        <div class="hero-image-wrapper">
+                            <img src="https://images.unsplash.com/photo-1558494949-ef010cbdcc31?w=600&h=600&fit=crop" alt="Cybersecurity Professional" class="hero-main-image" onerror="this.src='https://via.placeholder.com/600x600?text=Cybersecurity+Professional'">
+                            <div class="hero-image-glow"></div>
+                            <div class="hero-image-badge">
+                                <i class="fas fa-shield-alt"></i>
+                                <span>24/7 Protection</span>
+                            </div>
+                            <div class="hero-image-badge second">
+                                <i class="fas fa-robot"></i>
+                                <span>AI-Powered</span>
+                            </div>
+                        </div>
                     </div>
-                    <div class="stat-item">
-                        <span class="stat-number">+300k</span>
-                        <span class="stat-text">downloads worldwide</span>
-                    </div>
-                </div>
-                <div class="hero-info-card">
-                    <p>By partnering with a security provider, a company can significantly enhance the protection of its sensitive data. This includes implementing robust cybersecurity measures, preventing unauthorized access, data breaches, and cyberattacks.</p>
                 </div>
             </div>
             <div class="hero-background-shapes"></div>
@@ -61,43 +97,64 @@
         <section class="features-section">
             <video class="features-background-video" autoplay loop muted playsinline>
                 <source src="logo/202587-918431513_tiny.mp4" type="video/mp4">
-                Your browser does not support the video tag.
             </video>
             <div class="container">
-                <p class="section-tagline">Protecting your data with cutting-edge technology, empowering you with privacy everywhere.</p>
-                <div class="feature-cards">
-                    <div class="feature-card">
-                        <span class="icon">⋆</span> Authentication
-                    </div>
-                    <div class="feature-card">
-                        <span class="icon">◇</span> Unified Security
-                    </div>
-                    <div class="feature-card">
-                        <img src="https://via.placeholder.com/24x24" alt="Western Union Logo" class="client-logo"> Western Union
-                    </div>
-                    <div class="feature-card">
-                        <img src="https://via.placeholder.com/24x24" alt="Dropbox Logo" class="client-logo"> Dropbox
-                    </div>
+                <div class="section-tagline">
+                    <i class="fas fa-microchip"></i> Cutting-edge security fabric — invisible protection, absolute privacy.
                 </div>
-                <button class="btn demo-btn" onclick="window.location.href='sign up.html'">Try Demo</button>
+                <div class="feature-cards">
+                    <div class="feature-card"><span class="icon"><i class="fas fa-fingerprint"></i></span> Biometric Auth</div>
+                    <div class="feature-card"><span class="icon"><i class="fas fa-shield-alt"></i></span> Unified SASE</div>
+                    <div class="feature-card"><i class="fab fa-western-union"></i> Western Union</div>
+                    <div class="feature-card"><i class="fab fa-dropbox"></i> Dropbox</div>
+                    <div class="feature-card"><i class="fas fa-cloud-upload-alt"></i> Zero-Trust Network</div>
+                </div>
+                <button class="demo-btn" id="demoBtn">Experience Live Demo →</button>
             </div>
         </section>
 
         <section class="benefits-section">
             <div class="container">
-                <h2 class="section-title">Our Key Benefits</h2>
+                <h2 class="section-title">Why Fortune 500s Choose Us</h2>
                 <div class="benefit-cards">
                     <div class="benefit-card">
-                        <h3>Proactive Threat Detection & Response</h3>
-                        <p>Our security providers continuously monitor networks, endpoints, and system activities to identify suspicious patterns or anomalies that may indicate a security breach, ensuring swift action.</p>
+                        <i class="fas fa-bolt" style="font-size: 2rem; margin-bottom: 16px; color: #2e6edf;"></i>
+                        <h3>Proactive Threat Hunting</h3>
+                        <p>Our 24/7 AI-driven defense identifies zero-day exploits and advanced persistent threats before they materialize.</p>
                     </div>
                     <div class="benefit-card">
-                        <h3>Expertise & Industry Knowledge</h3>
-                        <p>Our experts possess specialized knowledge and extensive experience in identifying and mitigating evolving security threats, ensuring the latest and most effective practices are always implemented.</p>
+                        <i class="fas fa-chalkboard-user" style="font-size: 2rem; margin-bottom: 16px; color: #2e6edf;"></i>
+                        <h3>Elite Cybersecurity Expertise</h3>
+                        <p>Access to world-class ethical hackers, CISSP analysts, and compliance specialists.</p>
                     </div>
                     <div class="benefit-card">
-                        <h3>Comprehensive Data Protection</h3>
-                        <p>We offer a holistic approach to safeguarding your data, from advanced encryption to secure access controls, providing peace of mind against unauthorized access and cyberattacks.</p>
+                        <i class="fas fa-database" style="font-size: 2rem; margin-bottom: 16px; color: #2e6edf;"></i>
+                        <h3>Quantum-Resistant Encryption</h3>
+                        <p>Post-quantum cryptography with full data lifecycle protection and immutable audit trails.</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section class="luna-assistant-section">
+            <div class="container">
+                <div class="luna-card">
+                    <div class="luna-card-content">
+                        <div class="luna-avatar">
+                            <i class="fas fa-moon"></i>
+                            <div class="luna-pulse"></div>
+                        </div>
+                        <div class="luna-text">
+                            <h3>Meet Luna <span>✨ Your AI Security Assistant</span></h3>
+                            <p>I'm Luna, your 24/7 cybersecurity companion. Ask me anything about protecting your data, setting up security protocols, or navigating our services. I'm here to make security simple!</p>
+                            <div class="luna-quick-actions">
+                                <button class="luna-quick-btn" data-question="How do I protect my data?">🔒 Protect my data</button>
+                                <button class="luna-quick-btn" data-question="What security solutions do you offer?">🛡️ Security solutions</button>
+                                <button class="luna-quick-btn" data-question="How does encryption work?">🔐 About encryption</button>
+                                <button class="luna-quick-btn" data-question="Get started with Underworld">🚀 Get started</button>
+                            </div>
+                            <button class="chat-with-luna-btn" id="homeChatBtn"><i class="fas fa-comment-dots"></i> Chat with Luna</button>
+                        </div>
                     </div>
                 </div>
             </div>
@@ -106,33 +163,52 @@
 
     <footer class="footer-section">
         <div class="container">
-            <p>&copy; 2025 Underworld Technology. All rights reserved. | Data Security Solutions in Kenya</p>
-            <p>Send an Email: <a href="mailto:underworldhacker7@gmail.com">underworldhacker7@gmail.com</a></p>
+            <div class="footer-grid">
+                <div class="footer-brand">
+                    <div class="footer-logo"><i class="fas fa-shield-hooded"></i><span>Underworld <span>Technology</span></span></div>
+                    <p>Protecting Kenya's digital landscape with cutting-edge cybersecurity solutions and Luna AI assistance.</p>
+                    <div class="footer-social">
+                        <a href="#"><i class="fab fa-linkedin-in"></i></a>
+                        <a href="#"><i class="fab fa-twitter"></i></a>
+                        <a href="#"><i class="fab fa-facebook-f"></i></a>
+                        <a href="#"><i class="fab fa-instagram"></i></a>
+                    </div>
+                </div>
+                <div class="footer-links"><h4>Company</h4><ul><li><a href="company.html">About Us</a></li><li><a href="#">Careers</a></li><li><a href="#">Blog</a></li></ul></div>
+                <div class="footer-links"><h4>Resources</h4><ul><li><a href="support.html">Support Center</a></li><li><a href="#">Documentation</a></li><li><a href="#">API Reference</a></li></ul></div>
+                <div class="footer-contact"><h4>Contact</h4><ul><li><i class="fas fa-envelope"></i> <a href="mailto:underworldhacker7@gmail.com">underworldhacker7@gmail.com</a></li><li><i class="fas fa-phone-alt"></i> +254 703 161 031</li><li><i class="fas fa-map-marker-alt"></i> Nairobi, Kenya</li></ul></div>
+            </div>
+            <div class="footer-bottom"><p><i class="far fa-copyright"></i> 2025 Underworld Technology — All rights reserved. | Securing Kenya's digital frontier</p><p class="footer-luna-credit">🌙 Made with Luna AI — Your 24/7 Security Companion</p></div>
         </div>
     </footer>
 
-    <script>
-        const menuToggle = document.getElementById('menuToggle');
-        const navLinks = document.getElementById('navLinks');
+    <div class="luna-floating-badge" id="lunaFloatingBadge">
+        <div class="luna-avatar-small"><i class="fas fa-moon"></i><span class="luna-online-dot"></span></div>
+        <div class="luna-speech-bubble"><p>✨ Hi! I'm Luna 🌙<br>Need help with security?</p><button id="floatingChatBtn">Chat with me →</button></div>
+    </div>
 
-        if (menuToggle && navLinks) {
-            menuToggle.addEventListener('click', (e) => {
-                e.stopPropagation();
-                navLinks.classList.toggle('open');
-            });
+    <div class="modal-overlay" id="chatModal">
+        <div class="chat-modal">
+            <div class="chat-header"><div class="chat-header-info"><i class="fas fa-moon"></i><div><h3>Chat with Luna 🌙</h3><p>Online • Always here to help</p></div></div><button class="chat-close" id="closeChatModal"><i class="fas fa-times"></i></button></div>
+            <div class="chat-messages" id="chatMessages">
+                <div class="chat-message bot">
+                    <div class="message-avatar"><i class="fas fa-moon"></i></div>
+                    <div class="message-content">
+                        <p>✨ Hello! I'm Luna, your cybersecurity assistant! 🌙</p>
+                        <p>I'm here to help you with security solutions, data protection, encryption, and getting started.</p>
+                        <div class="quick-replies">
+                            <button class="quick-reply" data-question="security">🔒 Security solutions</button>
+                            <button class="quick-reply" data-question="encryption">🔐 Encryption help</button>
+                            <button class="quick-reply" data-question="start">🚀 Get started</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="chat-input-area"><input type="text" id="chatInput" placeholder="Ask Luna anything..." class="chat-input"><button id="sendChatBtn" class="chat-send"><i class="fas fa-paper-plane"></i></button></div>
+            <div class="chat-footer"><p><i class="fas fa-moon"></i> Luna is AI-powered • Secure & private • 24/7 assistance</p></div>
+        </div>
+    </div>
 
-            document.addEventListener('click', (e) => {
-                if (!navLinks.contains(e.target) && !menuToggle.contains(e.target)) {
-                    navLinks.classList.remove('open');
-                }
-            });
-
-            navLinks.addEventListener('click', (e) => {
-                if (e.target.tagName === 'A') {
-                    navLinks.classList.remove('open');
-                }
-            });
-        }
-    </script>
+    <script src="script.js"></script>
 </body>
 </html>

@@ -2,96 +2,91 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Underworld Technology - Support</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
+    <title>Underworld Technology | Support Center - Meet Luna</title>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:opsz,wght@14..32,300;400;500;600;700;800&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
     <link rel="stylesheet" href="support.css">
-    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap">
 </head>
 <body>
-    <header class="navbar">
+    <header class="navbar" id="navbar">
         <div class="container">
-            <nav class="nav-links">
-                <ul>
-                    <li><a href="index.html">platform</a></li>
-                    <li><a href="solution.html">solutions</a></li>
-                    <li><a href="company.html">company</a></li>
-                    <li><a href="support.html">support</a></li>
-                </ul>
-            </nav>
-            
+            <div class="logo">
+                <svg class="logo-badge" viewBox="0 0 40 40" fill="none" xmlns="http://www.w3.org/2000/svg">
+                    <path d="M20 4L32 12V28L20 36L8 28V12L20 4Z" stroke="url(#grad)" stroke-width="1.5" fill="rgba(46,110,223,0.2)" />
+                    <circle cx="20" cy="20" r="6" fill="url(#grad)" stroke="white" stroke-width="1" />
+                    <defs><linearGradient id="grad" x1="8" y1="4" x2="32" y2="36" gradientUnits="userSpaceOnUse"><stop stop-color="#2e6edf"/><stop offset="1" stop-color="#8b5cf6"/></linearGradient></defs>
+                </svg>
+                Underworld <span>Technology</span>
+            </div>
+            <nav class="nav-links" id="navLinks"><ul><li><a href="index.html">Platform</a></li>
+            <li><a href="solution.html">Solutions</a></li>
+            <li><a href="company.html">Company</a>
+            </li><li><a href="support.html" class="active">Support</a></li>
+            <li><a href="services.html">Dashboard</a></li></ul></nav>
+            <button class="menu-toggle" id="menuToggle"><span class="bar"></span><span class="bar"></span><span class="bar"></span></button>
+            <button class="get-started-btn" onclick="window.location.href='sign up.html'">Get Started</button>
         </div>
     </header>
 
     <main>
-        <section class="support-hero-section">
-            <div class="container">
-                <h1 class="hero-title">How Can We Help You Today?</h1>
-                <p class="hero-description">Welcome to our support center. Below you'll find answers to common questions and ways to get in touch with our team.</p>
-                <div class="search-support">
-                    <input type="text" placeholder="Search for answers...">
-                    <button class="btn secondary-btn">Search</button>
-                </div>
-            </div>
-        </section>
+        <section class="support-hero"><div class="container"><div class="hero-content"><span class="hero-badge"><i class="fas fa-moon"></i> Meet Luna - Your AI Assistant</span><h1 class="hero-title">How Can <span class="gradient-text">Luna</span> Help You?</h1><p class="hero-description">Hi! I'm Luna 🌙, your 24/7 cybersecurity assistant. Ask me anything!</p></div></div></section>
 
-        <section class="faq-section">
-            <div class="container">
-                <h2 class="section-title">Frequently Asked Questions</h2>
-                <div class="faq-items">
-                    <div class="faq-item">
-                        <h3>What types of data security solutions do you offer?</h3>
-                        <p>We offer comprehensive solutions including Endpoint Security, Network Security, Cloud Security, Data Backup & Recovery, Security Awareness Training, and Vulnerability Assessment & Penetration Testing.</p>
-                    </div>
-                    <div class="faq-item">
-                        <h3>How does your Endpoint Security protect my devices?</h3>
-                        <p>Our Endpoint Security provides real-time threat detection, centralized management, and data loss prevention (DLP) to protect laptops, desktops, and mobile devices from malware and ransomware.</p>
-                    </div>
-                    <div class="faq-item">
-                        <h3>Is my data backed up securely?</h3>
-                        <p>Yes, we prioritize secure offsite storage and automated backups with rapid recovery capabilities to ensure your data is always protected and accessible.</p>
-                    </div>
-                    <div class="faq-item">
-                        <h3>Do you provide security training for employees?</h3>
-                        <p>Absolutely. We offer comprehensive security awareness training programs, including phishing simulations and best practices, to empower your employees as the first line of defense.</p>
-                    </div>
-                    <div class="faq-item">
-                        <h3>How can I contact technical support?</h3>
-                        <p>You can reach our technical support team via email at support@underworldtech.com or call us at +254 7XX XXX XXX during business hours. Please see the contact section below for more details.</p>
-                    </div>
-                </div>
-            </div>
-        </section>
+        <section class="quick-actions"><div class="container"><div class="quick-actions-grid"><div class="quick-action-card"><div class="action-icon"><i class="fas fa-ticket-alt"></i></div><h3>Submit a Ticket</h3><button class="action-btn" onclick="alert('Ticket system coming soon!')">Create Ticket</button></div><div class="quick-action-card"><div class="action-icon"><i class="fas fa-comments"></i></div><h3>Chat with Luna</h3><button class="action-btn" id="openChatBtn">Start Chat <i class="fas fa-moon"></i></button></div><div class="quick-action-card"><div class="action-icon"><i class="fas fa-book-open"></i></div><h3>Knowledge Base</h3><button class="action-btn">Browse Guides</button></div></div></div></section>
 
-        <section class="contact-support-section">
-            <div class="container">
-                <h2 class="section-title">Still Need Help?</h2>
-                <p class="contact-info">If you couldn't find the answer you were looking for, please don't hesitate to reach out to our dedicated support team.</p>
-                <div class="contact-options">
-                    <div class="contact-option-card">
-                        <h3>Email Us</h3>
-                        <p>For non-urgent inquiries or detailed support requests.</p>
-                        <a href="mailto:support@underworldtech.com" class="btn primary-btn">Send Email</a>
-                    </div>
-                    <div class="contact-option-card">
-                        <h3>Call Support</h3>
-                        <p>For immediate assistance during business hours.</p>
-                        <a href="tel:+254703161031" class="btn primary-btn">Call Now</a>
-                    </div>
-                    <div class="contact-option-card">
-                        <h3>Open a Ticket</h3>
-                        <p>Submit a formal support ticket for tracking and resolution.</p>
-                        <button class="btn primary-btn">Submit Ticket</button>
-                    </div>
-                </div>
-            </div>
-        </section>
+        <section class="faq-section"><div class="container"><div class="section-header"><span class="section-subtitle">Luna's Knowledge Base</span><h2 class="section-title">Frequently Asked Questions</h2></div><div class="faq-grid"><div class="faq-card"><div class="faq-header"><i class="fas fa-shield-alt"></i><h3>What security solutions do you offer?</h3><i class="fas fa-chevron-down faq-toggle"></i></div><div class="faq-content"><p>We offer Endpoint Security, Network Security, Cloud Security, Data Backup, and Security Training.</p></div></div><div class="faq-card"><div class="faq-header"><i class="fas fa-cloud-upload-alt"></i><h3>Is my data backed up securely?</h3><i class="fas fa-chevron-down faq-toggle"></i></div><div class="faq-content"><p>Yes! AES-256 encryption, automated daily backups, and secure offsite storage.</p></div></div><div class="faq-card"><div class="faq-header"><i class="fas fa-user-circle"></i><h3>How do I reset my password?</h3><i class="fas fa-chevron-down faq-toggle"></i></div><div class="faq-content"><p>Click 'Forgot Password?' on login, enter your email, and follow the reset link.</p></div></div></div></div></section>
     </main>
 
-    <footer class="footer-section">
-        <div class="container">
-            <p>&copy; 2023 Underworld Technology. All rights reserved. | Data Security Solutions in Kenya</p>
-        </div>
-    </footer>
+    <div class="luna-floating-badge" id="lunaFloatingBadge"><div class="luna-avatar-small"><i class="fas fa-moon"></i><span class="luna-online-dot"></span></div><div class="luna-speech-bubble"><p>✨ Need help? I'm Luna!</p><button id="floatingChatBtn">Chat with me →</button></div></div>
 
+    <div class="modal-overlay" id="chatModal"><div class="chat-modal"><div class="chat-header"><div class="chat-header-info"><i class="fas fa-moon"></i><div><h3>Chat with Luna 🌙</h3><p>Online • Always here to help</p></div></div><button class="chat-close" id="closeChatModal"><i class="fas fa-times"></i></button></div><div class="chat-messages" id="chatMessages"><div class="chat-message bot"><div class="message-avatar"><i class="fas fa-moon"></i></div><div class="message-content"><p>✨ Hi! I'm Luna! How can I help you today? 🌙</p></div></div></div><div class="chat-input-area"><input type="text" id="chatInput" placeholder="Ask Luna anything..." class="chat-input"><button id="sendChatBtn" class="chat-send"><i class="fas fa-paper-plane"></i></button></div></div></div>
+
+    <footer class="footer"><div class="container"><div class="footer-bottom"><p>&copy; 2025 Underworld Technology. All rights reserved. | Made with <i class="fas fa-moon"></i> by Luna</p></div></div></footer>
+
+    <script>
+        const chatModal = document.getElementById('chatModal');
+        const openChatBtn = document.getElementById('openChatBtn');
+        const floatingChatBtn = document.getElementById('floatingChatBtn');
+        const closeChatModal = document.getElementById('closeChatModal');
+        const sendChatBtn = document.getElementById('sendChatBtn');
+        const chatInput = document.getElementById('chatInput');
+        const chatMessages = document.getElementById('chatMessages');
+
+        function openChat() { chatModal.classList.add('active'); }
+        function closeChat() { chatModal.classList.remove('active'); }
+        function addMessage(msg, isUser = false) {
+            const div = document.createElement('div');
+            div.className = `chat-message ${isUser ? 'user' : 'bot'}`;
+            div.innerHTML = `<div class="message-avatar"><i class="fas ${isUser ? 'fa-user' : 'fa-moon'}"></i></div><div class="message-content"><p>${msg}</p></div>`;
+            chatMessages.appendChild(div);
+            chatMessages.scrollTop = chatMessages.scrollHeight;
+        }
+        function sendMessage() {
+            const msg = chatInput.value.trim();
+            if (!msg) return;
+            addMessage(msg, true);
+            chatInput.value = '';
+            setTimeout(() => {
+                let response = "I'm here to help! You can ask me about security, backups, or account issues.";
+                if (msg.toLowerCase().includes('security')) response = "🔒 Our security solutions include Endpoint Protection, Network Security, and Cloud Security!";
+                else if (msg.toLowerCase().includes('backup')) response = "💾 Your data is backed up daily with AES-256 encryption!";
+                else if (msg.toLowerCase().includes('password')) response = "🔑 Click 'Forgot Password?' on the login page to reset your password.";
+                addMessage(response, false);
+            }, 500);
+        }
+        if (openChatBtn) openChatBtn.addEventListener('click', openChat);
+        if (floatingChatBtn) floatingChatBtn.addEventListener('click', openChat);
+        if (closeChatModal) closeChatModal.addEventListener('click', closeChat);
+        if (sendChatBtn) sendChatBtn.addEventListener('click', sendMessage);
+        if (chatInput) chatInput.addEventListener('keypress', (e) => { if (e.key === 'Enter') sendMessage(); });
+        if (chatModal) chatModal.addEventListener('click', (e) => { if (e.target === chatModal) closeChat(); });
+
+        const menuToggle = document.getElementById('menuToggle');
+        const navLinks = document.getElementById('navLinks');
+        if (menuToggle && navLinks) {
+            menuToggle.addEventListener('click', (e) => { e.stopPropagation(); navLinks.classList.toggle('open'); });
+            document.addEventListener('click', () => { navLinks.classList.remove('open'); });
+        }
+    </script>
 </body>
 </html>

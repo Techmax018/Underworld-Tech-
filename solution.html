@@ -2,124 +2,369 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Underworld Technology - Protect Your Data</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
+    <title>Underworld Technology | Enterprise Security Solutions</title>
+    <meta name="description" content="Discover Underworld Technology's comprehensive cybersecurity solutions including endpoint security, network protection, cloud security, and threat monitoring.">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:opsz,wght@14..32,300;400;500;600;700;800&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
     <link rel="stylesheet" href="style.css">
-    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap">
+    <link rel="stylesheet" href="solution.css">
 </head>
 <body>
-    <header class="navbar">
+    <header class="navbar" id="navbar">
         <div class="container">
             <div class="logo">
-                <img src="logo/logo2.png" alt="Logo Badge" class="logo-badge">
+                <svg class="logo-badge" viewBox="0 0 40 40" fill="none" xmlns="http://www.w3.org/2000/svg">
+                    <path d="M20 4L32 12V28L20 36L8 28V12L20 4Z" stroke="url(#grad)" stroke-width="1.5" fill="rgba(46,110,223,0.2)" />
+                    <circle cx="20" cy="20" r="6" fill="url(#grad)" stroke="white" stroke-width="1" />
+                    <defs>
+                        <linearGradient id="grad" x1="8" y1="4" x2="32" y2="36" gradientUnits="userSpaceOnUse">
+                            <stop stop-color="#2e6edf" />
+                            <stop offset="1" stop-color="#8b5cf6" />
+                        </linearGradient>
+                    </defs>
+                </svg>
                 Underworld <span>Technology</span>
             </div>
-            <nav class="nav-links">
+            <nav class="nav-links" id="navLinks">
                 <ul>
-                    <li><a href="index.html">platform</a></li>
-                    <li><a href="company.html">company</a></li>
-                    <li><a href="support.html">support</a></li>
-                    <li><a href="services.html">services</a></li>
+                    <li><a href="index.html">Platform</a></li>
+                    <li><a href="solution.html" class="active">Solutions</a></li>
+                    <li><a href="company.html">Company</a></li>
+                    <li><a href="support.html">Support</a></li>
+                    <li><a href="services.html">Dashboard</a></li>
                 </ul>
             </nav>
-            <button class="get-started-btn" onclick="window.location.href='sign up.html'">get started</button>
+            <button class="menu-toggle" id="menuToggle" aria-label="Toggle navigation">
+                <span class="bar"></span>
+                <span class="bar"></span>
+                <span class="bar"></span>
+            </button>
+            <button class="get-started-btn" id="getStartedBtn">Get Started</button>
         </div>
     </header>
 
     <main>
-        <section class="hero-section">
+        <!-- Hero Section -->
+        <section class="solutions-hero">
             <div class="container">
-                <h1 class="hero-title">Secure Your Future: Comprehensive Data Security</h1>
-                <p class="hero-description">In today's digital landscape, protecting your company's data is paramount. We offer cutting-edge solutions to safeguard your sensitive information and ensure business continuity.</p>
-                <div class="hero-stats">
-                    <div class="stat-item">
-                        <span class="stat-number">+1.5b</span>
-                        <span class="stat-text">all data protected</span>
+                <div class="hero-grid">
+                    <div class="hero-content">
+                        <span class="hero-badge"><i class="fas fa-cube"></i> Enterprise Solutions</span>
+                        <h1 class="hero-title">Comprehensive <span class="gradient-text">Security Solutions</span> for Modern Business</h1>
+                        <p class="hero-description">Protect your organization with our layered security approach. From endpoint protection to cloud security, we've got you covered.</p>
+                        <div class="hero-stats">
+                            <div class="stat-item"><span class="stat-number">99.9%</span><span class="stat-text">Threat Prevention</span></div>
+                            <div class="stat-item"><span class="stat-number">24/7</span><span class="stat-text">Monitoring</span></div>
+                            <div class="stat-item"><span class="stat-number">500+</span><span class="stat-text">Enterprise Clients</span></div>
+                        </div>
+                        <div class="hero-buttons">
+                            <button class="btn-primary" id="contactSalesBtn"><i class="fas fa-headset"></i> Contact Sales</button>
+                            <button class="btn-secondary" id="exploreSolutionsBtn"><i class="fas fa-arrow-down"></i> Explore Solutions</button>
+                        </div>
                     </div>
-                    <div class="stat-item">
-                        <span class="stat-number">+65k</span>
-                        <span class="stat-text">clients secured</span>
-                    </div>
-                    <div class="stat-item">
-                        <span class="stat-number">+300k</span>
-                        <span class="stat-text">threats neutralized</span>
-                    </div>
-                </div>
-                <div class="hero-actions">
-                    <button class="btn primary-btn">Explore Solutions</button>
-                    <button class="btn secondary-btn">Get a Demo</button>
-                </div>
-            </div>
-            <div class="hero-background-shapes"></div>
-        </section>
-
-        <section class="features-section">
-            
-            <div class="container">
-                <p class="section-tagline">Comprehensive solutions guarding your data with utmost care, empowering you with privacy everywhere.</p>
-                <div class="feature-cards">
-                    <div class="feature-card">
-                        <span class="icon">⋆</span> Endpoint Security
-                    </div>
-                    <div class="feature-card">
-                        <span class="icon">◇</span> Network Security
-                    </div>
-                    <div class="feature-card">
-                        <span class="icon">◎</span> Cloud Security
-                    </div>
-                    <div class="feature-card">
-                        <span class="icon">⌂</span> Data Backup & Recovery
-                    </div>
-                    <div class="feature-card">
-                        <span class="icon">◒</span> Awareness Training
-                    </div>
-                    <div class="feature-card">
-                        <span class="icon">◧</span> Vulnerability Testing
-                    </div>
-                </div>
-                <button class="btn demo-btn" onclick="window.location.href='sign up.html'">Secure Your Business</button>
-            </div>
-        </section>
-
-        <section class="benefits-section">
-            <div class="container">
-                <h2 class="section-title">Why Choose Our Security Solutions?</h2>
-                <div class="benefit-cards">
-                    <div class="benefit-card">
-                        <h3>Proactive Threat Detection and Response</h3>
-                        <p>We continuously monitor networks, endpoints, and system activities to identify suspicious patterns or anomalies, preventing breaches before they occur.</p>
-                    </div>
-                    <div class="benefit-card">
-                        <h3>Expertise and Industry Knowledge</h3>
-                        <p>Our specialized team has extensive experience in identifying and mitigating complex security threats, ensuring the latest best practices are always applied.</p>
-                    </div>
-                    <div class="benefit-card">
-                        <h3>Compliance and Risk Management</h3>
-                        <p>Stay compliant with industry regulations and minimize your risk exposure with our robust security frameworks and continuous auditing.</p>
+                    <div class="hero-image">
+                        <div class="hero-image-wrapper">
+                            <img src="https://images.unsplash.com/photo-1451187580459-43490279c0fa?w=600&h=600&fit=crop" alt="Security Solutions" class="hero-main-image" onerror="this.src='https://via.placeholder.com/600x600?text=Security+Solutions'">
+                            <div class="hero-image-glow"></div>
+                            <div class="hero-image-badge"><i class="fas fa-shield-alt"></i><span>Enterprise Grade</span></div>
+                            <div class="hero-image-badge second"><i class="fas fa-cloud-upload-alt"></i><span>Cloud Ready</span></div>
+                        </div>
                     </div>
                 </div>
             </div>
+            <div class="hero-background-shapes">
+                <div class="shape shape-1"></div>
+                <div class="shape shape-2"></div>
+            </div>
         </section>
 
-        <section id="contact-us" class="contact-section">
+        <!-- Solutions Grid Section -->
+        <section class="solutions-grid-section" id="solutions">
             <div class="container">
-                <h2 class="section-title">Ready to Secure Your Data? Contact Us Today</h2>
-                <p class="contact-info">Our team of data security experts in Kenya is ready to assist you. Contact us for a consultation and learn how we can protect your business.</p>
-                <form class="contact-form">
-                    <input type="text" placeholder="Your Name">
-                    <input type="email" placeholder="Your Email">
-                    <textarea placeholder="Your Message"></textarea>
-                    <button type="submit" class="btn secondary-btn">Send Inquiry</button>
-                </form>
+                <div class="section-header">
+                    <span class="section-subtitle">What We Offer</span>
+                    <h2 class="section-title">Our Security Solutions</h2>
+                    <p class="section-description">Comprehensive protection for every layer of your digital infrastructure</p>
+                </div>
+                <div class="solutions-grid">
+                    <div class="solution-card">
+                        <div class="solution-icon"><i class="fas fa-laptop-code"></i></div>
+                        <h3>Endpoint Security</h3>
+                        <p>Protect all endpoints including laptops, desktops, and mobile devices from malware, ransomware, and unauthorized access.</p>
+                        <ul class="solution-features">
+                            <li><i class="fas fa-check-circle"></i> Real-time threat detection</li>
+                            <li><i class="fas fa-check-circle"></i> Centralized management</li>
+                            <li><i class="fas fa-check-circle"></i> Data loss prevention</li>
+                        </ul>
+                        <button class="learn-more-btn" data-solution="Endpoint Security">Learn More →</button>
+                    </div>
+                    <div class="solution-card">
+                        <div class="solution-icon"><i class="fas fa-network-wired"></i></div>
+                        <h3>Network Security</h3>
+                        <p>Secure your network infrastructure with advanced firewall, intrusion detection, and network monitoring solutions.</p>
+                        <ul class="solution-features">
+                            <li><i class="fas fa-check-circle"></i> Next-gen firewall</li>
+                            <li><i class="fas fa-check-circle"></i> IDS/IPS protection</li>
+                            <li><i class="fas fa-check-circle"></i> Network segmentation</li>
+                        </ul>
+                        <button class="learn-more-btn" data-solution="Network Security">Learn More →</button>
+                    </div>
+                    <div class="solution-card">
+                        <div class="solution-icon"><i class="fas fa-cloud-upload-alt"></i></div>
+                        <h3>Cloud Security</h3>
+                        <p>Protect your cloud infrastructure and data across AWS, Azure, and Google Cloud platforms.</p>
+                        <ul class="solution-features">
+                            <li><i class="fas fa-check-circle"></i> Cloud workload protection</li>
+                            <li><i class="fas fa-check-circle"></i> Data encryption</li>
+                            <li><i class="fas fa-check-circle"></i> Compliance monitoring</li>
+                        </ul>
+                        <button class="learn-more-btn" data-solution="Cloud Security">Learn More →</button>
+                    </div>
+                    <div class="solution-card">
+                        <div class="solution-icon"><i class="fas fa-database"></i></div>
+                        <h3>Data Backup & Recovery</h3>
+                        <p>Automated backup solutions with rapid recovery capabilities to ensure business continuity.</p>
+                        <ul class="solution-features">
+                            <li><i class="fas fa-check-circle"></i> Automated daily backups</li>
+                            <li><i class="fas fa-check-circle"></i> AES-256 encryption</li>
+                            <li><i class="fas fa-check-circle"></i> One-click restoration</li>
+                        </ul>
+                        <button class="learn-more-btn" data-solution="Data Backup & Recovery">Learn More →</button>
+                    </div>
+                    <div class="solution-card">
+                        <div class="solution-icon"><i class="fas fa-chalkboard-user"></i></div>
+                        <h3>Security Awareness Training</h3>
+                        <p>Empower your employees with the knowledge to identify and prevent security threats.</p>
+                        <ul class="solution-features">
+                            <li><i class="fas fa-check-circle"></i> Interactive modules</li>
+                            <li><i class="fas fa-check-circle"></i> Phishing simulations</li>
+                            <li><i class="fas fa-check-circle"></i> Progress tracking</li>
+                        </ul>
+                        <button class="learn-more-btn" data-solution="Security Awareness Training">Learn More →</button>
+                    </div>
+                    <div class="solution-card">
+                        <div class="solution-icon"><i class="fas fa-search"></i></div>
+                        <h3>Vulnerability Assessment</h3>
+                        <p>Regular security assessments and penetration testing to identify and fix vulnerabilities.</p>
+                        <ul class="solution-features">
+                            <li><i class="fas fa-check-circle"></i> Comprehensive scanning</li>
+                            <li><i class="fas fa-check-circle"></i> Risk prioritization</li>
+                            <li><i class="fas fa-check-circle"></i> Remediation guidance</li>
+                        </ul>
+                        <button class="learn-more-btn" data-solution="Vulnerability Assessment">Learn More →</button>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Why Choose Us Section -->
+        <section class="why-choose-section">
+            <div class="container">
+                <div class="why-choose-wrapper">
+                    <div class="why-choose-content">
+                        <span class="section-subtitle">Why Trust Us</span>
+                        <h2>Industry-Leading <span class="gradient-text">Security Expertise</span></h2>
+                        <p>With years of experience protecting businesses across Kenya and beyond, our team delivers unmatched security solutions tailored to your needs.</p>
+                        <div class="why-features">
+                            <div class="why-feature"><i class="fas fa-certificate"></i><div><h4>Certified Experts</h4><p>CISSP, CISM, CEH certified professionals</p></div></div>
+                            <div class="why-feature"><i class="fas fa-clock"></i><div><h4>24/7 Support</h4><p>Round-the-clock monitoring and assistance</p></div></div>
+                            <div class="why-feature"><i class="fas fa-chart-line"></i><div><h4>99.9% Uptime</h4><p>Guaranteed service availability</p></div></div>
+                            <div class="why-feature"><i class="fas fa-shield-alt"></i><div><h4>ISO Certified</h4><p>International security standards</p></div></div>
+                        </div>
+                    </div>
+                    <div class="why-choose-image">
+                        <img src="https://images.unsplash.com/photo-1563986768609-322da13575f3?w=500&h=400&fit=crop" alt="Security Experts" onerror="this.src='https://via.placeholder.com/500x400?text=Security+Experts'">
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Pricing Section -->
+        <section class="pricing-section">
+            <div class="container">
+                <div class="section-header">
+                    <span class="section-subtitle">Pricing Plans</span>
+                    <h2 class="section-title">Choose Your Security Package</h2>
+                    <p class="section-description">Flexible plans to fit your business needs and budget</p>
+                </div>
+                <div class="pricing-grid">
+                    <div class="pricing-card">
+                        <div class="pricing-header"><h3>Essential</h3><div class="price"><span class="currency">Ksh</span><span class="amount">499</span><span class="period">/month</span></div><p>Perfect for small businesses</p></div>
+                        <ul class="pricing-features"><li><i class="fas fa-check"></i> Endpoint Protection</li><li><i class="fas fa-check"></i> Basic Network Security</li><li><i class="fas fa-check"></i> Email Support</li><li><i class="fas fa-times"></i> 24/7 Monitoring</li><li><i class="fas fa-times"></i> Priority Support</li></ul>
+                        <button class="pricing-btn" data-plan="Essential">Get Started</button>
+                    </div>
+                    <div class="pricing-card featured">
+                        <div class="popular-badge">Most Popular</div>
+                        <div class="pricing-header"><h3>Professional</h3><div class="price"><span class="currency">Ksh</span><span class="amount">1,999</span><span class="period">/month</span></div><p>For growing businesses</p></div>
+                        <ul class="pricing-features"><li><i class="fas fa-check"></i> All Essential features</li><li><i class="fas fa-check"></i> Advanced Threat Detection</li><li><i class="fas fa-check"></i> Cloud Security</li><li><i class="fas fa-check"></i> 24/7 Monitoring</li><li><i class="fas fa-check"></i> Priority Support</li></ul>
+                        <button class="pricing-btn featured-btn" data-plan="Professional">Get Started</button>
+                    </div>
+                    <div class="pricing-card">
+                        <div class="pricing-header"><h3>Enterprise</h3><div class="price"><span class="currency">Ksh</span><span class="amount">4,999</span><span class="period">/month</span></div><p>For large organizations</p></div>
+                        <ul class="pricing-features"><li><i class="fas fa-check"></i> All Professional features</li><li><i class="fas fa-check"></i> Custom Security Architecture</li><li><i class="fas fa-check"></i> Dedicated Security Team</li><li><i class="fas fa-check"></i> Compliance Management</li><li><i class="fas fa-check"></i> 99.9% SLA Guarantee</li></ul>
+                        <button class="pricing-btn" data-plan="Enterprise">Contact Sales</button>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Contact Section -->
+        <section class="contact-section">
+            <div class="container">
+                <div class="contact-wrapper">
+                    <div class="contact-info">
+                        <div class="contact-icon"><i class="fas fa-headset"></i></div>
+                        <h2>Ready to Get Started?</h2>
+                        <p>Our security experts are ready to help you find the perfect solution for your business.</p>
+                        <div class="contact-methods">
+                            <div class="contact-method"><i class="fas fa-phone-alt"></i><span>+254 703 161 031</span></div>
+                            <div class="contact-method"><i class="fas fa-envelope"></i><span>sales@underworld.co.ke</span></div>
+                        </div>
+                    </div>
+                    <form class="contact-form" id="solutionContactForm">
+                        <div class="form-row"><input type="text" placeholder="Full Name" required><input type="email" placeholder="Email Address" required></div>
+                        <div class="form-row"><input type="tel" placeholder="Phone Number"><select><option>Select Solution Interest</option><option>Endpoint Security</option><option>Network Security</option><option>Cloud Security</option><option>Data Backup</option><option>Security Training</option></select></div>
+                        <textarea rows="4" placeholder="Tell us about your security needs..."></textarea>
+                        <button type="submit" class="submit-btn"><i class="fas fa-paper-plane"></i> Request Consultation</button>
+                    </form>
+                </div>
             </div>
         </section>
     </main>
 
     <footer class="footer-section">
         <div class="container">
-            <p>&copy; 2023 Underworld Technology. All rights reserved. | Data Security Solutions in Kenya</p>
+            <div class="footer-grid">
+                <div class="footer-brand">
+                    <div class="footer-logo"><i class="fas fa-shield-hooded"></i><span>Underworld <span>Technology</span></span></div>
+                    <p>Protecting Kenya's digital landscape with cutting-edge cybersecurity solutions.</p>
+                    <div class="footer-social"><a href="#"><i class="fab fa-linkedin-in"></i></a><a href="#"><i class="fab fa-twitter"></i></a><a href="#"><i class="fab fa-facebook-f"></i></a><a href="#"><i class="fab fa-instagram"></i></a></div>
+                </div>
+                <div class="footer-links"><h4>Solutions</h4><ul><li><a href="#">Endpoint Security</a></li><li><a href="#">Network Security</a></li><li><a href="#">Cloud Security</a></li><li><a href="#">Data Backup</a></li></ul></div>
+                <div class="footer-links"><h4>Company</h4><ul><li><a href="company.html">About Us</a></li><li><a href="#">Careers</a></li><li><a href="#">Blog</a></li><li><a href="#">Press</a></li></ul></div>
+                <div class="footer-contact"><h4>Contact</h4><ul><li><i class="fas fa-envelope"></i> <a href="mailto:underworldhacker7@gmail.com">underworldhacker7@gmail.com</a></li><li><i class="fas fa-phone-alt"></i> +254 703 161 031</li><li><i class="fas fa-map-marker-alt"></i> Nairobi, Kenya</li></ul></div>
+            </div>
+            <div class="footer-bottom">
+                <p>&copy; 2023-<span id="currentYear"></span> Underworld Technology. All rights reserved. | Data Security Solutions in Kenya</p>
+                <div class="footer-legal"><a href="#">Privacy Policy</a><a href="#">Terms of Service</a><a href="#">Cookie Policy</a></div>
+            </div>
         </div>
     </footer>
 
+    <!-- Luna Chat Modal -->
+    <div class="luna-floating-badge" id="lunaFloatingBadge">
+        <div class="luna-avatar-small"><i class="fas fa-moon"></i><span class="luna-online-dot"></span></div>
+        <div class="luna-speech-bubble"><p>✨ Need help choosing a solution?</p><button id="floatingChatBtn">Chat with Luna →</button></div>
+    </div>
+
+    <div class="modal-overlay" id="chatModal">
+        <div class="chat-modal">
+            <div class="chat-header"><div class="chat-header-info"><i class="fas fa-moon"></i><div><h3>Chat with Luna 🌙</h3><p>Your solution advisor</p></div></div><button class="chat-close" id="closeChatModal"><i class="fas fa-times"></i></button></div>
+            <div class="chat-messages" id="chatMessages">
+                <div class="chat-message bot"><div class="message-avatar"><i class="fas fa-moon"></i></div><div class="message-content"><p>✨ Hi! I'm Luna! Need help finding the right security solution? 🌙</p><p>Tell me about your business size and security needs!</p><div class="quick-replies"><button class="quick-reply" data-question="small">🏢 Small Business</button><button class="quick-reply" data-question="medium">📊 Medium Business</button><button class="quick-reply" data-question="enterprise">🏭 Enterprise</button></div></div></div>
+            </div>
+            <div class="chat-input-area"><input type="text" id="chatInput" placeholder="Ask Luna about solutions..." class="chat-input"><button id="sendChatBtn" class="chat-send"><i class="fas fa-paper-plane"></i></button></div>
+        </div>
+    </div>
+
+    <script>
+        // ==================== DYNAMIC COPYRIGHT YEAR ====================
+        document.getElementById('currentYear').textContent = new Date().getFullYear();
+
+        // ==================== NAVBAR SCROLL EFFECT ====================
+        window.addEventListener('scroll', () => {
+            const navbar = document.getElementById('navbar');
+            if (window.scrollY > 50) navbar.classList.add('scrolled');
+            else navbar.classList.remove('scrolled');
+        });
+
+        // ==================== MOBILE MENU ====================
+        const menuToggle = document.getElementById('menuToggle');
+        const navLinks = document.getElementById('navLinks');
+        if (menuToggle && navLinks) {
+            menuToggle.addEventListener('click', (e) => { e.stopPropagation(); navLinks.classList.toggle('open'); menuToggle.classList.toggle('active'); });
+            document.addEventListener('click', () => { navLinks.classList.remove('open'); menuToggle.classList.remove('active'); });
+            navLinks.querySelectorAll('a').forEach(link => link.addEventListener('click', () => { navLinks.classList.remove('open'); menuToggle.classList.remove('active'); }));
+        }
+
+        // ==================== BUTTON ACTIONS ====================
+        document.getElementById('getStartedBtn')?.addEventListener('click', () => window.location.href = 'sign up.html');
+        document.getElementById('contactSalesBtn')?.addEventListener('click', () => document.querySelector('.contact-section').scrollIntoView({ behavior: 'smooth' }));
+        document.getElementById('exploreSolutionsBtn')?.addEventListener('click', () => document.querySelector('.solutions-grid-section').scrollIntoView({ behavior: 'smooth' }));
+
+        // ==================== SOLUTION LEARN MORE ====================
+        document.querySelectorAll('.learn-more-btn').forEach(btn => {
+            btn.addEventListener('click', () => { alert(`📋 ${btn.getAttribute('data-solution')}\n\nOur security experts will contact you shortly with more information about this solution.`); });
+        });
+
+        // ==================== PRICING BUTTONS ====================
+        document.querySelectorAll('.pricing-btn').forEach(btn => {
+            btn.addEventListener('click', () => { alert(`🚀 ${btn.getAttribute('data-plan')} Plan Selected!\n\nThank you for your interest. Our sales team will contact you within 24 hours to help you get started.`); });
+        });
+
+        // ==================== CONTACT FORM ====================
+        const contactForm = document.getElementById('solutionContactForm');
+        if (contactForm) {
+            contactForm.addEventListener('submit', (e) => {
+                e.preventDefault();
+                alert('✅ Thank you for your inquiry!\n\nOne of our security experts will contact you within 24 hours to discuss your needs.');
+                contactForm.reset();
+            });
+        }
+
+        // ==================== LUNA CHAT ====================
+        const chatModal = document.getElementById('chatModal');
+        const floatingChatBtn = document.getElementById('floatingChatBtn');
+        const closeChatModal = document.getElementById('closeChatModal');
+        const sendChatBtn = document.getElementById('sendChatBtn');
+        const chatInput = document.getElementById('chatInput');
+        const chatMessages = document.getElementById('chatMessages');
+
+        function openChat() { chatModal.classList.add('active'); }
+        function closeChat() { chatModal.classList.remove('active'); }
+        function addMessage(msg, isUser = false) {
+            const div = document.createElement('div');
+            div.className = `chat-message ${isUser ? 'user' : 'bot'}`;
+            div.innerHTML = `<div class="message-avatar"><i class="fas ${isUser ? 'fa-user' : 'fa-moon'}"></i></div><div class="message-content"><p>${msg}</p></div>`;
+            chatMessages.appendChild(div);
+            chatMessages.scrollTop = chatMessages.scrollHeight;
+        }
+        function sendMessage() {
+            const msg = chatInput.value.trim();
+            if (!msg) return;
+            addMessage(msg, true);
+            chatInput.value = '';
+            setTimeout(() => {
+                let response = "I can help you find the right security solution! Tell me about your business size - small, medium, or enterprise?";
+                if (msg.toLowerCase().includes('small')) response = "🏢 For small businesses, our Essential plan at Ksh 499/month is perfect! It includes endpoint protection and basic network security. Want to learn more?";
+                else if (msg.toLowerCase().includes('medium')) response = "📊 Our Professional plan at Ksh 1,999/month is ideal for medium businesses! It includes advanced threat detection and 24/7 monitoring. Shall I connect you with a sales representative?";
+                else if (msg.toLowerCase().includes('enterprise')) response = "🏭 For enterprise needs, we offer custom solutions with dedicated security teams and 99.9% SLA guarantees. Would you like me to schedule a consultation?";
+                else response = "I can help you choose the right plan! What size is your business? (Small, Medium, or Enterprise)";
+                addMessage(response, false);
+            }, 500);
+        }
+        if (floatingChatBtn) floatingChatBtn.addEventListener('click', openChat);
+        if (closeChatModal) closeChatModal.addEventListener('click', closeChat);
+        if (sendChatBtn) sendChatBtn.addEventListener('click', sendMessage);
+        if (chatInput) chatInput.addEventListener('keypress', (e) => { if (e.key === 'Enter') sendMessage(); });
+        if (chatModal) chatModal.addEventListener('click', (e) => { if (e.target === chatModal) closeChat(); });
+        document.querySelectorAll('.quick-reply').forEach(btn => {
+            btn.addEventListener('click', () => { chatInput.value = btn.getAttribute('data-question'); sendMessage(); });
+        });
+
+        // ==================== SMOOTH SCROLL ====================
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function(e) {
+                const href = this.getAttribute('href');
+                if (href !== '#' && href !== '') {
+                    const target = document.querySelector(href);
+                    if (target) { e.preventDefault(); target.scrollIntoView({ behavior: 'smooth' }); }
+                }
+            });
+        });
+    </script>
 </body>
 </html>

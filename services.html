@@ -2,248 +2,112 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Underworld Technology - Services</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
+    <title>Underworld Technology | Security Dashboard</title>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:opsz,wght@14..32,300;400;500;600;700;800&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
     <link rel="stylesheet" href="services.css">
-    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap">
-    <script type="module" src="firebaseauth.js"></script>
 </head>
 <body>
-    <header class="navbar">
-        <div class="container">
-            <!-- Logo image only for mobile -->
-            <div class="logo-mobile">
-                <img src="logo/logo2.png" alt="Logo Badge" class="logo-badge">
+    <div class="dashboard-wrapper">
+        <!-- Sidebar -->
+        <aside class="sidebar" id="sidebar">
+            <div class="sidebar-header">
+                <div class="sidebar-logo">
+                    <svg class="logo-badge" viewBox="0 0 40 40" fill="none" xmlns="http://www.w3.org/2000/svg">
+                        <path d="M20 4L32 12V28L20 36L8 28V12L20 4Z" stroke="url(#grad)" stroke-width="1.5" fill="rgba(46,110,223,0.2)" />
+                        <circle cx="20" cy="20" r="6" fill="url(#grad)" stroke="white" stroke-width="1" />
+                        <defs><linearGradient id="grad" x1="8" y1="4" x2="32" y2="36" gradientUnits="userSpaceOnUse"><stop stop-color="#2e6edf"/><stop offset="1" stop-color="#8b5cf6"/></linearGradient></defs>
+                    </svg>
+                    Underworld <span>Tech</span>
+                </div>
             </div>
-            <div class="logo">
-                <img src="logo/logo2.png" alt="Logo Badge" class="logo-badge">
-                Underworld <span>Technology</span>
-            </div>
-            <nav class="nav-links" id="navLinks">
-                <ul>
-                    <li><a href="index.html">platform</a></li>
-                    <li><a href="solution.html">solutions</a></li>
-                    <li><a href="company.html">company</a></li>
-                    <li><a href="support.html">support</a></li>
-                </ul>
+            <nav class="sidebar-nav">
+                <div class="nav-section-title">MAIN</div>
+                <div class="nav-item active" data-section="overview"><i class="fas fa-tachometer-alt"></i><span>Overview</span></div>
+                <div class="nav-item" data-section="services"><i class="fas fa-rocket"></i><span>Services</span></div>
+                <div class="nav-item" data-section="subscriptions"><i class="fas fa-crown"></i><span>Subscriptions</span></div>
+                <div class="nav-item" data-section="activity"><i class="fas fa-history"></i><span>Activity</span></div>
+                <div class="nav-section-title">ACCOUNT</div>
+                <div class="nav-item" data-section="security"><i class="fas fa-shield-alt"></i><span>Security</span></div>
             </nav>
-            <button class="menu-toggle" id="menuToggle" aria-label="Toggle navigation">
-                <span class="bar"></span>
-                <span class="bar"></span>
-                <span class="bar"></span>
-            </button>
-            <div class="user-profile" id="userProfile" style="display:none; position:relative;">
-                <img src="https://ui-avatars.com/api/?name=User" alt="Profile" class="profile-pic" id="profilePic">
-                <span class="user-name" id="userName"></span>
-                <div class="profile-dropdown" id="profileDropdown">
-                    <div class="dropdown-item"><strong>Account Status:</strong> <span id="accountStatus">Active</span></div>
-                    <div class="dropdown-item"><strong>Subscription:</strong> <span id="subscriptionStatus">No subscription. Please subscribe a plan.</span></div>
-                    <button class="logout-btn" id="logoutBtn">Log Out</button>
-                    <button class="delete-account-btn" id="deleteAccountBtn">Delete Account</button>
+        </aside>
+
+        <!-- Main Content -->
+        <main class="main-content">
+            <div class="top-header">
+                <button class="menu-toggle-sidebar" id="menuToggleSidebar"><i class="fas fa-bars"></i></button>
+                <div class="page-title"><h1>Security Dashboard</h1><p>Monitor and manage your security services</p></div>
+                <div class="user-profile-header" id="userProfileHeader">
+                    <div class="user-info"><div class="user-name" id="userName">User</div><div class="user-role" id="userRole">Free Account</div></div>
+                    <img src="https://ui-avatars.com/api/?name=User&background=2e6edf&color=fff" alt="Profile" class="profile-pic" id="profilePic">
+                    <div class="account-panel" id="accountPanel">
+                        <div class="panel-header"><img src="https://ui-avatars.com/api/?name=User&background=2e6edf&color=fff" alt="" id="panelProfilePic"><div><h3 id="panelUserName">User</h3><p id="panelUserEmail">user@example.com</p></div></div>
+                        <div class="panel-stats"><div class="panel-stat"><div class="value" id="activeServicesCount">0</div><div class="label">Active Services</div></div><div class="panel-stat"><div class="value" id="subscriptionStatus">Free</div><div class="label">Plan</div></div></div>
+                        <div class="panel-actions"><button class="panel-btn logout-btn" id="logoutBtn"><i class="fas fa-sign-out-alt"></i> Log Out</button><button class="panel-btn delete-btn" id="deleteAccountBtn"><i class="fas fa-trash-alt"></i> Delete Account</button></div>
+                    </div>
                 </div>
             </div>
+
+            <div class="content-sections">
+                <!-- Overview Section -->
+                <div class="section active" id="section-overview">
+                    <div class="stats-grid">
+                        <div class="stat-card"><div class="stat-icon blue"><i class="fas fa-shield-hooded"></i></div><div><div class="stat-number" id="protectedAssets">0</div><div class="stat-label">Protected Assets</div></div></div>
+                        <div class="stat-card"><div class="stat-icon purple"><i class="fas fa-cloud-upload-alt"></i></div><div><div class="stat-number" id="cloudStorage">0 <span style="font-size:0.9rem;">GB</span></div><div class="stat-label">Cloud Storage Used</div></div></div>
+                        <div class="stat-card"><div class="stat-icon green"><i class="fas fa-chart-line"></i></div><div><div class="stat-number" id="threatsBlocked">0</div><div class="stat-label">Threats Blocked</div></div></div>
+                        <div class="stat-card"><div class="stat-icon orange"><i class="fas fa-clock"></i></div><div><div class="stat-number">99.9%</div><div class="stat-label">Uptime</div></div></div>
+                    </div>
+                    <div class="activity-timeline"><h3 style="margin-bottom: 16px;">Recent Activity</h3><div id="activityList"><div class="activity-item"><i class="fas fa-check-circle" style="color: var(--success);"></i><div><p>Welcome to Underworld Technology Dashboard</p><small style="color: var(--secondary-text);">Just now</small></div></div></div></div>
+                </div>
+
+                <!-- Services Section -->
+                <div class="section" id="section-services">
+                    <h2 style="margin-bottom: 24px;">Available Services</h2>
+                    <h3 style="margin: 24px 0 16px;">Free Trial (3 Months)</h3>
+                    <div class="services-grid">
+                        <div class="service-card"><div class="service-icon"><i class="fas fa-lock"></i></div><h3>Data Protection</h3><p>Advanced encryption and security protocols to keep your data safe.</p><div><span class="price-old">Ksh 499/month</span> <span class="free-badge">FREE Trial</span></div><button class="activate-btn" data-service="data-protection" data-name="Data Protection">Activate Free Trial</button></div>
+                        <div class="service-card"><div class="service-icon"><i class="fas fa-cloud-upload-alt"></i></div><h3>Cloud Backup</h3><p>Automatic and secure cloud backups for your important files.</p><div><span class="price-old">Ksh 499/month</span> <span class="free-badge">FREE Trial</span></div><button class="activate-btn" data-service="cloud-backup" data-name="Cloud Backup">Activate Free Trial</button></div>
+                    </div>
+                    <h3 style="margin: 32px 0 16px;">Premium Services</h3>
+                    <div class="services-grid" id="premiumServicesGrid"></div>
+                </div>
+
+                <!-- Subscriptions Section -->
+                <div class="section" id="section-subscriptions">
+                    <h2 style="margin-bottom: 24px;">My Active Subscriptions</h2>
+                    <div id="activeSubscriptionsList" class="services-grid"><div class="empty-state"><i class="fas fa-crown"></i><p>No active subscriptions yet.</p></div></div>
+                </div>
+
+                <!-- Activity Section -->
+                <div class="section" id="section-activity">
+                    <h2 style="margin-bottom: 24px;">Activity History</h2>
+                    <div class="activity-timeline" id="fullActivityList"></div>
+                </div>
+
+                <!-- Security Section -->
+                <div class="section" id="section-security">
+                    <h2 style="margin-bottom: 24px;">Security Settings</h2>
+                    <div class="services-grid">
+                        <div class="service-card"><div class="service-icon"><i class="fas fa-key"></i></div><h3>Two-Factor Authentication</h3><p>Add an extra layer of security to your account.</p><button class="settings-btn" id="enable2faBtn">Enable 2FA</button></div>
+                        <div class="service-card"><div class="service-icon"><i class="fas fa-history"></i></div><h3>Session Management</h3><p>View and manage active sessions.</p><button class="settings-btn" id="manageSessionsBtn">Manage Sessions</button></div>
+                    </div>
+                </div>
+            </div>
+        </main>
+    </div>
+
+    <!-- Subscription Payment Modal -->
+    <div class="modal-overlay" id="paymentModal">
+        <div class="subscription-modal">
+            <div class="modal-header"><i class="fas fa-credit-card"></i><h2 id="modalServiceName">Subscribe to Service</h2><p>Complete your payment to activate the service</p></div>
+            <div class="plan-details"><div><span>Plan:</span><strong id="modalPlanName">Service Name</strong></div><div><span>Price:</span><strong id="modalPrice" style="color: var(--blue-primary);">Ksh 0/month</strong></div></div>
+            <div class="payment-options"><h4>Payment Method</h4><div class="payment-method selected" data-method="mpesa"><i class="fas fa-mobile-alt"></i><div><strong>M-Pesa</strong><small>Pay with M-Pesa mobile money</small></div></div><div class="payment-method" data-method="card"><i class="fas fa-credit-card"></i><div><strong>Credit/Debit Card</strong><small>Visa, Mastercard, American Express</small></div></div><div class="payment-method" data-method="bank"><i class="fas fa-university"></i><div><strong>Bank Transfer</strong><small>Direct bank transfer</small></div></div></div>
+            <div class="modal-actions"><button class="cancel-payment" id="cancelPaymentBtn">Cancel</button><button class="confirm-payment" id="confirmPaymentBtn">Confirm Payment</button></div>
         </div>
-    </header>
-    <main>
-        <section class="services-hero-section">
-            <div class="container">
-                <h1 class="hero-title">Our Services</h1>
-                <p class="hero-description">Explore the range of services we offer to protect and empower your data.</p>
-                
-                <h2 class="services-section-title">Regular Services <span class="service-section-badge free">(Free for 3 months)</span></h2>
-                <div class="services-list">
-                    <div class="service-card">
-                        <h3>Data Protection</h3>
-                        <p>Advanced encryption and security protocols to keep your data safe.</p>
-                        <div class="service-pricing">
-                            <span class="service-badge free">Free for 3 months</span><br>
-                            <span class="service-price">Ksh 499/month or Ksh 4,999/year after trial</span>
-                        </div>
-                    </div>
-                    <div class="service-card">
-                        <h3>Cloud Backup</h3>
-                        <p>Automatic and secure cloud backups for your important files.</p>
-                        <div class="service-pricing">
-                            <span class="service-badge free">Free for 3 months</span><br>
-                            <span class="service-price">Ksh 499/month or Ksh 4,999/year after trial</span>
-                        </div>
-                    </div>
-                </div>
-                
-                <h2 class="services-section-title">Premium Services <span class="service-section-badge premium">(Subscription)</span></h2>
-                <div class="services-list">
-                    <div class="service-card premium">
-                        <h3>Threat Monitoring</h3>
-                        <p>24/7 monitoring to detect and respond to cyber threats in real time.</p>
-                        <div class="service-pricing">
-                            <span class="service-price">Ksh 1,999/month or Ksh 19,999/year</span>
-                        </div>
-                        <button class="subscribe-btn">Subscribe</button>
-                    </div>
-                    <div class="service-card premium">
-                        <h3>Consulting</h3>
-                        <p>Expert advice and solutions tailored to your business needs.</p>
-                        <div class="service-pricing">
-                            <span class="service-price">Ksh 1,999/month or Ksh 19,999/year</span>
-                        </div>
-                        <button class="subscribe-btn">Subscribe</button>
-                    </div>
-                    <div class="service-card premium">
-                        <h3>Disaster Recovery</h3>
-                        <p>Comprehensive plans and support to recover from data loss events.</p>
-                        <div class="service-pricing">
-                            <span class="service-price">Ksh 1,999/month or Ksh 19,999/year</span>
-                        </div>
-                        <button class="subscribe-btn">Subscribe</button>
-                    </div>
-                    <div class="service-card premium">
-                        <h3>Advanced Analytics</h3>
-                        <p>In-depth analysis and reporting to optimize your data security.</p>
-                        <div class="service-pricing">
-                            <span class="service-price">Ksh 1,999/month or Ksh 19,999/year</span>
-                        </div>
-                        <button class="subscribe-btn">Subscribe</button>
-                    </div>
-                    <div class="service-card premium">
-                        <h3>Priority Support</h3>
-                        <p>Get fast, 24/7 access to our expert support team for urgent issues.</p>
-                        <div class="service-pricing">
-                            <span class="service-price">Ksh 1,999/month or Ksh 19,999/year</span>
-                        </div>
-                        <button class="subscribe-btn">Subscribe</button>
-                    </div>
-                    <div class="service-card premium">
-                        <h3>Custom Integrations</h3>
-                        <p>Tailored integrations with your existing tools and workflows.</p>
-                        <div class="service-pricing">
-                            <span class="service-price">Ksh 1,999/month or Ksh 19,999/year</span>
-                        </div>
-                        <button class="subscribe-btn">Subscribe</button>
-                    </div>
-                </div>
-                </div>
-        </section>
-    </main>
-    <script type="module">
-        import { getAuth, onAuthStateChanged, signOut, deleteUser } from "https://www.gstatic.com/firebasejs/11.9.1/firebase-auth.js";
-        import { getFirestore, doc, getDoc, deleteDoc } from "https://www.gstatic.com/firebasejs/11.9.1/firebase-firestore.js";
-        import { initializeApp } from "https://www.gstatic.com/firebasejs/11.9.1/firebase-app.js";
+    </div>
 
-        const firebaseConfig = {
-            apiKey: "AIzaSyBjg4BmX1t0kPPZHBgn39qMh0KxLXGdnxY",
-            authDomain: "login-37da6.firebaseapp.com",
-            projectId: "login-37da6",
-            storageBucket: "login-37da6.appspot.com",
-            messagingSenderId: "976257188489",
-            appId: "1:976257188489:web:8ea88e1e7c33f4a1867c58"
-        };
-        const app = initializeApp(firebaseConfig);
-
-        const userProfile = document.getElementById('userProfile');
-        const userName = document.getElementById('userName');
-        const profilePic = document.getElementById('profilePic');
-        const accountStatus = document.getElementById('accountStatus');
-        const subscriptionStatus = document.getElementById('subscriptionStatus');
-        const profileDropdown = document.getElementById('profileDropdown');
-        const logoutBtn = document.getElementById('logoutBtn');
-        const deleteAccountBtn = document.getElementById('deleteAccountBtn');
-        const menuToggle = document.getElementById('menuToggle');
-        const navLinks = document.getElementById('navLinks');
-
-        const auth = getAuth(app);
-        const db = getFirestore(app);
-
-        // Toggle dropdown on profile click
-        if (userProfile) {
-            userProfile.addEventListener('click', (e) => {
-                e.stopPropagation();
-                userProfile.classList.toggle('open');
-            });
-            document.addEventListener('click', () => {
-                userProfile.classList.remove('open');
-            });
-        }
-
-        // Toggle mobile menu
-        if (menuToggle && navLinks) {
-            menuToggle.addEventListener('click', (e) => {
-                e.stopPropagation();
-                navLinks.classList.toggle('open');
-            });
-            // Optional: close menu when clicking outside or on a link
-            document.addEventListener('click', () => {
-                navLinks.classList.remove('open');
-            });
-            navLinks.addEventListener('click', (e) => {
-                if (e.target.tagName === 'A') navLinks.classList.remove('open');
-            });
-        }
-
-        // Auth state
-        onAuthStateChanged(auth, async (user) => {
-            if (user) {
-                userProfile.style.display = "flex";
-                userName.textContent = user.displayName || user.email.split('@')[0];
-                profilePic.src = user.photoURL || `https://ui-avatars.com/api/?name=${encodeURIComponent(user.displayName || user.email.split('@')[0])}`;
-                // Fetch subscription status from Firestore
-                try {
-                    const userDoc = await getDoc(doc(db, "users", user.uid));
-                    if (userDoc.exists()) {
-                        const data = userDoc.data();
-                        if (data.subscription && data.subscription === "active") {
-                            accountStatus.textContent = "Active";
-                            subscriptionStatus.textContent = "Premium subscription active.";
-                        } else {
-                            accountStatus.textContent = "Passive";
-                            subscriptionStatus.textContent = "No subscription. Please subscribe a plan.";
-                        }
-                    } else {
-                        accountStatus.textContent = "Passive";
-                        subscriptionStatus.textContent = "No subscription. Please subscribe a plan.";
-                    }
-                } catch (e) {
-                    accountStatus.textContent = "Passive";
-                    subscriptionStatus.textContent = "No subscription. Please subscribe a plan.";
-                }
-            } else {
-                userProfile.style.display = "none";
-            }
-        });
-
-        // Log out
-        if (logoutBtn) {
-            logoutBtn.addEventListener('click', async () => {
-                await signOut(auth);
-                window.location.href = "index.html";
-            });
-        }
-
-        // Delete account
-        if (deleteAccountBtn) {
-            deleteAccountBtn.addEventListener('click', async () => {
-                if (confirm("Are you sure you want to delete your account? This action cannot be undone.")) {
-                    try {
-                        const user = auth.currentUser;
-                        if (user) {
-                            // Delete user data from Firestore
-                            await deleteDoc(doc(db, "users", user.uid));
-                            // Delete the user account
-                            await deleteUser(user);
-                            alert("Your account and all data have been deleted.");
-                            window.location.href = "index.html";
-                        }
-                    } catch (error) {
-                        alert("Error deleting account: " + (error.message || error));
-                    }
-                }
-            });
-        }
-    </script>
-    <footer class="footer-section">
-        <div class="container">
-            <p>&copy; 2023 Underworld Technology. All rights reserved. | Data Security Solutions in Kenya</p>
-        </div>
-    </footer>
-
+    <!-- IMPORTANT: Change script type to "module" -->
+    <script type="module" src="dashboard.js"></script>
 </body>
 </html>
