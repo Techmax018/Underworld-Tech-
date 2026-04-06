@@ -1,18 +1,25 @@
+// Import Firebase modules
 import { initializeApp } from "https://www.gstatic.com/firebasejs/11.9.1/firebase-app.js";
 import { 
     getAuth, 
     createUserWithEmailAndPassword, 
     signInWithEmailAndPassword,
+    signInWithPopup,
+    GoogleAuthProvider,
     sendPasswordResetEmail,
     updateProfile,
-    GoogleAuthProvider,
-    signInWithPopup
+    onAuthStateChanged,
+    sendEmailVerification
 } from "https://www.gstatic.com/firebasejs/11.9.1/firebase-auth.js";
 import { 
-    getFirestore, doc, setDoc, serverTimestamp 
+    getFirestore, 
+    doc, 
+    setDoc, 
+    getDoc,
+    serverTimestamp 
 } from "https://www.gstatic.com/firebasejs/11.9.1/firebase-firestore.js";
 
-// --- CONFIGURATION ---
+// Firebase Configuration
 const firebaseConfig = {
     apiKey: "AIzaSyBjg4BmX1t0kPPZHBgn39qMh0KxLXGdnxY",
     authDomain: "login-37da6.firebaseapp.com",
@@ -22,122 +29,345 @@ const firebaseConfig = {
     appId: "1:976257188489:web:8ea88e1e7c33f4a1867c58"
 };
 
+// Initialize Firebase
 const app = initializeApp(firebaseConfig);
 const auth = getAuth(app);
 const db = getFirestore(app);
 const googleProvider = new GoogleAuthProvider();
 
-// --- UI UTILITIES ---
+// Add scopes for better user data
+googleProvider.addScope('email');
+googleProvider.addScope('profile');
 
-function setBtnLoading(btnId, isLoading) {
-    const btn = document.getElementById(btnId);
-    if (!btn) return;
-    if (isLoading) {
-        btn.disabled = true;
-        btn.dataset.originalText = btn.innerHTML;
-        btn.innerHTML = `<i class="fas fa-spinner fa-spin"></i> Processing...`;
-    } else {
-        btn.disabled = false;
-        btn.innerHTML = btn.dataset.originalText || btn.innerHTML;
-    }
-}
+// DOM Elements
+const loginForm = document.getElementById('loginForm');
+const signupForm = document.getElementById('signupForm');
+const loginEmail = document.getElementById('login-email');
+const loginPassword = document.getElementById('login-password');
+const signupName = document.getElementById('signup-name');
+const signupEmail = document.getElementById('signup-email');
+const signupPassword = document.getElementById('signup-password');
+const signupConfirmPassword = document.getElementById('signup-confirm-password');
+const loginMessage = document.getElementById('loginMessage');
+const signupMessage = document.getElementById('signupMessage');
 
+// Helper function to show messages
 function showMessage(element, message, isError = true) {
     if (!element) return;
     element.textContent = message;
-    element.className = isError ? 'messageDiv error-msg' : 'messageDiv success-msg';
     element.style.display = 'block';
-    // Style adjustments for visibility
-    element.style.color = isError ? '#ff4d4d' : '#00e676';
-    setTimeout(() => { element.style.display = 'none'; }, 5000);
+    element.style.backgroundColor = isError ? 'rgba(239, 68, 68, 0.2)' : 'rgba(16, 185, 129, 0.2)';
+    element.style.border = `1px solid ${isError ? '#ef4444' : '#10b981'}`;
+    element.style.padding = '12px';
+    element.style.borderRadius = '12px';
+    element.style.marginBottom = '20px';
+    element.style.fontSize = '0.85rem';
+    
+    setTimeout(() => {
+        element.style.display = 'none';
+    }, 5000);
 }
 
-// --- AUTHENTICATION ACTIONS ---
-
-// 1. Sign Up Logic
-document.getElementById('signupForm')?.addEventListener('submit', async (e) => {
-    e.preventDefault();
-    const name = document.getElementById('signup-name').value.trim();
-    const email = document.getElementById('signup-email').value.trim();
-    const password = document.getElementById('signup-password').value;
-    const confirm = document.getElementById('signup-confirm-password').value;
-    const msgDiv = document.getElementById('signupMessage');
-
-    if (password !== confirm) return showMessage(msgDiv, "Passwords do not match");
-    if (password.length < 6) return showMessage(msgDiv, "Password must be at least 6 characters");
-
-    setBtnLoading('signupBtn', true);
+// Save user to Firestore
+async function saveUserToFirestore(userId, userData) {
     try {
-        const cred = await createUserWithEmailAndPassword(auth, email, password);
-        await updateProfile(cred.user, { displayName: name });
-        
-        // Save user profile to Firestore
-        await setDoc(doc(db, "users", cred.user.uid), {
-            name,
-            email,
+        await setDoc(doc(db, "users", userId), {
+            ...userData,
             createdAt: serverTimestamp(),
-            plan: 'free',
-            role: 'user'
+            updatedAt: serverTimestamp(),
+            subscription: 'free'
         });
-
-        showMessage(msgDiv, "Fortress Access Created! Redirecting...", false);
-        setTimeout(() => { window.location.href = 'services.html'; }, 1500);
-    } catch (err) {
-        showMessage(msgDiv, err.message);
-    } finally {
-        setBtnLoading('signupBtn', false);
+        return true;
+    } catch (error) {
+        console.error("Error saving user:", error);
+        return false;
     }
-});
+}
 
-// 2. Login Logic
-document.getElementById('loginForm')?.addEventListener('submit', async (e) => {
-    e.preventDefault();
-    const email = document.getElementById('login-email').value.trim();
-    const password = document.getElementById('login-password').value;
-    const msgDiv = document.getElementById('loginMessage');
+// Set auth session in localStorage
+function setAuthSession(user) {
+    const sessionData = {
+        uid: user.uid,
+        email: user.email,
+        name: user.displayName || user.email.split('@')[0],
+        role: 'free',
+        lastLogin: new Date().toISOString()
+    };
+    localStorage.setItem('underworld_auth_token', btoa(`${user.uid}:${Date.now()}`));
+    localStorage.setItem('underworld_user', JSON.stringify(sessionData));
+}
 
-    setBtnLoading('loginBtn', true);
-    try {
-        await signInWithEmailAndPassword(auth, email, password);
-        showMessage(msgDiv, "Access Granted. Welcome back!", false);
-        setTimeout(() => { window.location.href = 'services.html'; }, 1000);
-    } catch (err) {
-        showMessage(msgDiv, "Invalid credentials. Access Denied.");
-    } finally {
-        setBtnLoading('loginBtn', false);
+// Clear auth session
+function clearAuthSession() {
+    localStorage.removeItem('underworld_auth_token');
+    localStorage.removeItem('underworld_user');
+}
+
+// ==================== EMAIL/PASSWORD SIGN UP ====================
+if (signupForm) {
+    signupForm.addEventListener('submit', async (e) => {
+        e.preventDefault();
+        
+        const name = signupName.value.trim();
+        const email = signupEmail.value.trim();
+        const password = signupPassword.value;
+        const confirmPassword = signupConfirmPassword.value;
+        
+        if (!name || !email || !password) {
+            showMessage(signupMessage, 'Please fill in all fields', true);
+            return;
+        }
+        
+        if (password !== confirmPassword) {
+            showMessage(signupMessage, 'Passwords do not match!', true);
+            return;
+        }
+        
+        if (password.length < 6) {
+            showMessage(signupMessage, 'Password must be at least 6 characters', true);
+            return;
+        }
+        
+        try {
+            const userCredential = await createUserWithEmailAndPassword(auth, email, password);
+            const user = userCredential.user;
+            
+            await updateProfile(user, { displayName: name });
+            
+            await saveUserToFirestore(user.uid, {
+                name: name,
+                email: email,
+                createdAt: new Date().toISOString()
+            });
+            
+            setAuthSession(user);
+            showMessage(signupMessage, 'Account created successfully! Redirecting...', false);
+            
+            setTimeout(() => {
+                window.location.href = 'services.html';
+            }, 1500);
+            
+        } catch (error) {
+            let errorMessage = 'Sign up failed. Please try again.';
+            if (error.code === 'auth/email-already-in-use') {
+                errorMessage = 'Email already registered. Please log in instead.';
+            } else if (error.code === 'auth/weak-password') {
+                errorMessage = 'Password is too weak. Use at least 6 characters.';
+            }
+            showMessage(signupMessage, errorMessage, true);
+        }
+    });
+}
+
+// ==================== EMAIL/PASSWORD LOGIN ====================
+if (loginForm) {
+    loginForm.addEventListener('submit', async (e) => {
+        e.preventDefault();
+        
+        const email = loginEmail.value.trim();
+        const password = loginPassword.value;
+        
+        if (!email || !password) {
+            showMessage(loginMessage, 'Please enter email and password', true);
+            return;
+        }
+        
+        try {
+            const userCredential = await signInWithEmailAndPassword(auth, email, password);
+            const user = userCredential.user;
+            
+            setAuthSession(user);
+            showMessage(loginMessage, 'Login successful! Redirecting...', false);
+            
+            setTimeout(() => {
+                window.location.href = 'services.html';
+            }, 1000);
+            
+        } catch (error) {
+            let errorMessage = 'Invalid email or password. Please try again.';
+            if (error.code === 'auth/user-not-found') {
+                errorMessage = 'No account found with this email. Please sign up first.';
+            } else if (error.code === 'auth/wrong-password') {
+                errorMessage = 'Incorrect password. Please try again.';
+            } else if (error.code === 'auth/too-many-requests') {
+                errorMessage = 'Too many failed attempts. Please try again later.';
+            }
+            showMessage(loginMessage, errorMessage, true);
+        }
+    });
+}
+
+// ==================== GOOGLE SIGN IN (FIXED) ====================
+let isGoogleSignInInProgress = false;
+
+window.loginWithGoogle = async function() {
+    // Prevent multiple simultaneous popups
+    if (isGoogleSignInInProgress) {
+        showNotification('Sign in already in progress. Please wait...', 'info');
+        return;
     }
-});
-
-// 3. Google Social Login
-window.loginWithGoogle = async () => {
+    
+    isGoogleSignInInProgress = true;
+    
     try {
+        // Show loading indicator
+        const googleBtn = document.querySelector('.google-login-btn');
+        if (googleBtn) {
+            googleBtn.disabled = true;
+            googleBtn.innerHTML = '<i class="fas fa-spinner fa-spin"></i> Connecting...';
+        }
+        
         const result = await signInWithPopup(auth, googleProvider);
         const user = result.user;
         
-        // Update user record in Firestore on every login
-        await setDoc(doc(db, "users", user.uid), {
-            name: user.displayName,
-            email: user.email,
-            lastLogin: serverTimestamp()
-        }, { merge: true });
-
-        window.location.href = 'services.html';
-    } catch (err) {
-        console.error("Google Auth Error:", err);
-        alert("Google Sign-in failed. Please try again.");
+        // Check if user exists in Firestore
+        const userDoc = await getDoc(doc(db, "users", user.uid));
+        
+        if (!userDoc.exists()) {
+            // New user - save to Firestore
+            await saveUserToFirestore(user.uid, {
+                name: user.displayName || user.email.split('@')[0],
+                email: user.email,
+                photoURL: user.photoURL,
+                createdAt: new Date().toISOString()
+            });
+        }
+        
+        setAuthSession(user);
+        showNotification('Google sign in successful! Redirecting...', 'success');
+        
+        setTimeout(() => {
+            window.location.href = 'services.html';
+        }, 1000);
+        
+    } catch (error) {
+        console.error('Google Sign-In Error:', error);
+        
+        let errorMessage = 'Google sign in failed. Please try again.';
+        
+        if (error.code === 'auth/popup-blocked') {
+            errorMessage = 'Popup was blocked by your browser. Please allow popups for this site and try again.';
+        } else if (error.code === 'auth/popup-closed-by-user') {
+            errorMessage = 'Sign in popup was closed. Please try again.';
+        } else if (error.code === 'auth/cancelled-popup-request') {
+            errorMessage = 'Multiple sign in attempts detected. Please wait a moment and try again.';
+        } else if (error.code === 'auth/network-request-failed') {
+            errorMessage = 'Network error. Please check your internet connection.';
+        }
+        
+        showNotification(errorMessage, 'error');
+        
+    } finally {
+        isGoogleSignInInProgress = false;
+        
+        // Reset button
+        const googleBtn = document.querySelector('.google-login-btn');
+        if (googleBtn) {
+            googleBtn.disabled = false;
+            googleBtn.innerHTML = '<i class="fab fa-google"></i> Continue with Google';
+        }
     }
 };
 
-// 4. Password Reset (Modal Integration)
-document.getElementById('sendResetBtn')?.addEventListener('click', async () => {
-    const email = document.getElementById('resetEmail').value.trim();
-    if (!email) return alert("Please enter your email address.");
+// Helper function for notifications
+function showNotification(message, type = 'success') {
+    const notification = document.createElement('div');
+    notification.innerHTML = `<i class="fas ${type === 'success' ? 'fa-check-circle' : 'fa-exclamation-circle'}"></i><span>${message}</span>`;
+    notification.style.cssText = `
+        position: fixed;
+        top: 20px;
+        right: 20px;
+        background: var(--bg-card);
+        border: 1px solid ${type === 'success' ? '#10b981' : '#ef4444'};
+        border-radius: 12px;
+        padding: 16px 24px;
+        display: flex;
+        align-items: center;
+        gap: 12px;
+        z-index: 2000;
+        animation: slideIn 0.3s ease;
+        backdrop-filter: blur(8px);
+        color: white;
+        font-family: 'Inter', sans-serif;
+        font-size: 0.85rem;
+    `;
+    document.body.appendChild(notification);
+    
+    setTimeout(() => {
+        notification.style.animation = 'slideOut 0.3s ease';
+        setTimeout(() => notification.remove(), 300);
+    }, 4000);
+}
 
+// Add notification styles if not present
+if (!document.querySelector('#notification-styles')) {
+    const style = document.createElement('style');
+    style.id = 'notification-styles';
+    style.textContent = `
+        @keyframes slideIn {
+            from {
+                transform: translateX(100%);
+                opacity: 0;
+            }
+            to {
+                transform: translateX(0);
+                opacity: 1;
+            }
+        }
+        @keyframes slideOut {
+            from {
+                transform: translateX(0);
+                opacity: 1;
+            }
+            to {
+                transform: translateX(100%);
+                opacity: 0;
+            }
+        }
+    `;
+    document.head.appendChild(style);
+}
+
+// ==================== FORGOT PASSWORD ====================
+window.sendPasswordReset = async function(email) {
+    if (!email) {
+        showNotification('Please enter your email address', 'error');
+        return { success: false, message: 'Please enter your email address' };
+    }
+    
     try {
         await sendPasswordResetEmail(auth, email);
-        alert("Check your inbox! A reset link has been sent.");
-        document.getElementById('forgotModal').classList.remove('active');
-    } catch (err) {
-        alert(err.message);
+        showNotification(`Password reset email sent to ${email}`, 'success');
+        return { success: true, message: 'Password reset email sent!' };
+    } catch (error) {
+        let errorMessage = 'Failed to send reset email.';
+        if (error.code === 'auth/user-not-found') {
+            errorMessage = 'No account found with this email.';
+        } else if (error.code === 'auth/invalid-email') {
+            errorMessage = 'Invalid email address.';
+        }
+        showNotification(errorMessage, 'error');
+        return { success: false, message: errorMessage };
+    }
+};
+
+// ==================== AUTH STATE MONITORING ====================
+onAuthStateChanged(auth, (user) => {
+    const isDashboardPage = window.location.pathname.includes('services.html');
+    const isAuthPage = window.location.pathname.includes('sign up.html') || 
+                       window.location.pathname.includes('index.html');
+    
+    if (isDashboardPage && !user) {
+        // Not logged in, redirect to signup
+        sessionStorage.setItem('redirectAfterLogin', window.location.pathname);
+        window.location.href = 'sign up.html';
+    }
+    
+    if (isAuthPage && user) {
+        // Already logged in, redirect to services (dashboard)
+        window.location.href = 'services.html';
     }
 });
+
+// Export for use in other files
+export { auth, db, sendPasswordResetEmail };
